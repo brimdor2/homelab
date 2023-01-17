@@ -19,22 +19,20 @@ metadata:
     hajimari.io/icon: download-network-outline
     # kubernetes.io/tls-acme: "true"
 spec:
-  enabled: true
   ingressClassName: nginx
+  tls:
+    - hosts:
+        - nzbget.eaglepass.io
+      secretName: nzbget-tls-certificate
   rules:
     hosts:
       - nzbget.eaglepass.io
-    tls:
-      - secretName: nzbget-tls-certificate
-        hosts:
-          - nzbget.eaglepass.io
-    ports:
-      - name: nzbget
-        port: 6789
-        targetPort: 6789
-        protocol: TCP
-    # selector:
-    #   app: nzbget
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: nzbget
+            servicePort: 6789
 
 ---
 apiVersion: apps/v1
