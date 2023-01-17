@@ -46,7 +46,6 @@ metadata:
   name: nzbget-clusterIP
   labels:
     app: nzbget
-  namespace: nzbget
 spec:
   type: ClusterIP
   externalTrafficPolicy:
@@ -100,7 +99,7 @@ spec:
             - name: TZ
               value: America/Chicago
           ports:
-            - name: nzbget
+            - name: http
               containerPort: 6789
 
       volumes:
