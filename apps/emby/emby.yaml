@@ -79,13 +79,6 @@ spec:
               mountPath: /data/tv2
             - name: backup
               mountPath: /external_backup
-          resources:
-            limits:
-              cpu: "12"
-              memory: "30Gi"
-            requests:
-              cpu: "8"
-              memory: "15Gi"
           env:
             - name: PUID
               value: "0"
