@@ -4,7 +4,6 @@ metadata:
   name: nzbget-ingress
   labels:
     app: nzbget
-  namespace: nzbget
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     hajimari.io/appName: NZBGet
@@ -53,7 +52,6 @@ metadata:
   name: nzbget
   labels:
     app: nzbget
-  namespace: nzbget
 spec:
   replicas: 1
   strategy:
