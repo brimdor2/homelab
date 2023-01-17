@@ -9,37 +9,32 @@ metadata:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: nzbget-tcp
+  name: nzbget-ingress
   labels:
     app: nzbget
   namespace: nzbget
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: nzbget-tcp
-  labels:
-    app: nzbget
-  namespace: nzbget
-enabled: true
-ingressClassName: nginx
-annotations:
-  cert-manager.io/cluster-issuer: letsencrypt-prod
-  hajimari.io/appName: NZBGet
-  hajimari.io/icon: download-network-outline
-  # kubernetes.io/tls-acme: "true"
-hosts:
-  - nzbget.eaglepass.io
-tls:
-  - secretName: nzbget-tls-certificate
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    hajimari.io/appName: NZBGet
+    hajimari.io/icon: download-network-outline
+    # kubernetes.io/tls-acme: "true"
+spec:
+  enabled: true
+  ingressClassName: nginx
+  rules:
     hosts:
       - nzbget.eaglepass.io
-ports:
-  - name: nzbget
-    port: 6789
-    targetPort: 6789
-    protocol: TCP
-selector:
-  app: nzbget
+    tls:
+      - secretName: nzbget-tls-certificate
+        hosts:
+          - nzbget.eaglepass.io
+    ports:
+      - name: nzbget
+        port: 6789
+        targetPort: 6789
+        protocol: TCP
+    selector:
+      app: nzbget
 
 ---
 apiVersion: apps/v1
