@@ -50,10 +50,10 @@ spec:
   type: ClusterIP
   externalTrafficPolicy:
   ports:
-    - port: 6789
-      targetPort: http
-      protocol: TCP
-      name: http
+  - port: 6789
+    targetPort: http
+    protocol: TCP
+    name: http
   selector:
     app: nzbget
 
