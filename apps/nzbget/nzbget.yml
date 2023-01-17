@@ -25,9 +25,8 @@ spec:
         - nzbget.eaglepass.io
       secretName: nzbget-tls-certificate
   rules:
-    - hosts:
-      - nzbget.eaglepass.io
-    - host:
+    hosts: nzbget.eaglepass.io
+    host:
       http:
         paths:
           - path: /
