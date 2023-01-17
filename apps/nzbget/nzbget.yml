@@ -35,8 +35,6 @@ spec:
                 port:
                   name: http
             pathType: Prefix
-  selector:
-    app: nzbget
 
 ---
 apiVersion: v1
