@@ -25,14 +25,16 @@ spec:
         - nzbget.eaglepass.io
       secretName: nzbget-tls-certificate
   rules:
-    hosts: nzbget.eaglepass.io
-    host:
+    - host: nzbget.eaglepass.io
       http:
         paths:
           - path: /
             backend:
-              serviceName: nzbget
-              servicePort: 6789
+              service:
+                name: nzbget
+                port:
+                  name: http
+            pathType: Prefix
 
 ---
 apiVersion: apps/v1
