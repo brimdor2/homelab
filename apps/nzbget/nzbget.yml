@@ -36,6 +36,27 @@ spec:
                   port:
                     name: http
               pathType: Prefix
+  selector:
+    app: nzbget
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nzbget-clusterIP
+  labels:
+    app: nzbget
+  namespace: nzbget
+spec:
+  type: ClusterIP
+  externalTrafficPolicy:
+  ports:
+    - port: 6789
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: nzbget
 
 ---
 apiVersion: apps/v1
