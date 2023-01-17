@@ -47,8 +47,8 @@ spec:
   type: ClusterIP
   externalTrafficPolicy:
   ports:
-    - port: http
-      targetPort: 6789
+    - port: 6789
+      targetPort: http
       protocol: TCP
       name: http
   selector:
