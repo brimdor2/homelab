@@ -25,17 +25,16 @@ spec:
         - nzbget.eaglepass.io
       secretName: nzbget-tls-certificate
   rules:
-    hosts:
-      - host: nzbget.eaglepass.io
-        http:
-          paths:
-            - path: /
-              backend:
-                service:
-                  name: nzbget
-                  port:
-                    name: http
-              pathType: Prefix
+    - host: nzbget.eaglepass.io
+      http:
+        paths:
+          - path: /
+            backend:
+              service:
+                name: nzbget
+                port:
+                  name: http
+            pathType: Prefix
   selector:
     app: nzbget
 
@@ -50,10 +49,10 @@ spec:
   type: ClusterIP
   externalTrafficPolicy:
   ports:
-  - port: 6789
-    targetPort: http
-    protocol: TCP
-    name: http
+    - port: 6789
+      targetPort: http
+      protocol: TCP
+      name: http
   selector:
     app: nzbget
 
