@@ -21,6 +21,7 @@ metadata:
 spec:
   ingressClassName: nginx
   tls:
+    - tls:
     - hosts:
         - nzbget.eaglepass.io
       secretName: nzbget-tls-certificate
