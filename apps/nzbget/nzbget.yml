@@ -47,8 +47,8 @@ spec:
   type: ClusterIP
   externalTrafficPolicy:
   ports:
-    - port: 6789
-      targetPort: http
+    - port: http
+      targetPort: 6789
       protocol: TCP
       name: http
   selector:
@@ -98,7 +98,6 @@ spec:
           ports:
             - name: http
               containerPort: 6789
-
       volumes:
         - name: config
           iscsi:
