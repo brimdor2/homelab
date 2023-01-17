@@ -8,7 +8,6 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     hajimari.io/appName: NZBGet
     hajimari.io/icon: download-network-outline
-    # kubernetes.io/tls-acme: "true"
 spec:
   ingressClassName: nginx
   tls:
@@ -31,17 +30,17 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nzbget-cluster
+  name: nzbget-service
   labels:
     app: nzbget
 spec:
   type: ClusterIP
   externalTrafficPolicy:
   ports:
-    - port: 6789
-      targetPort: http
+    - name: http
+      port: http
+      targetPort: 6789
       protocol: TCP
-      name: http
   selector:
     app: nzbget
 
@@ -49,7 +48,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nzbget
+  name: nzbget-deployment
   labels:
     app: nzbget
 spec:
