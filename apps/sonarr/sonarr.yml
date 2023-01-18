@@ -101,9 +101,11 @@ spec:
               mountPath: /tv2
           env:
             - name: PUID
-              value: "1000"
+              value: "0"
+              # value: "1000"
             - name: PGID
-              value: "1000"
+              value: "0"
+              # value: "1000"
             - name: PATH
               value: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
             - name: HOME
