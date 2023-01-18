@@ -9,7 +9,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     hajimari.io/appName: Requestrr
-    hajimari.io/icon: surround-sound
+    hajimari.io/icon: account-question
 spec:
   ingressClassName: nginx
   tls:
