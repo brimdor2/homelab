@@ -41,7 +41,7 @@ spec:
   ports:
     - name: http
       port: 6789
-      targetPort: 80
+      targetPort: http
       protocol: TCP
   selector:
     app: nzbget
