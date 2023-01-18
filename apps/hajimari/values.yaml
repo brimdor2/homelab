@@ -23,7 +23,6 @@ hajimari:
     defaultEnable: true
     namespaceSelector:
       any: true
-    name: Chris
     groups:
       - name: Homelab
         links:
