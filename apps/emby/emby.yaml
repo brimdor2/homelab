@@ -17,6 +17,7 @@ spec:
   tls:
     - hosts:
         - emby.eaglepass.io
+        - emby-health.eaglepass.io
       secretName: emby-tls-certificate
   rules:
     - host: emby.eaglepass.io
@@ -28,6 +29,16 @@ spec:
                 name: emby-service
                 port:
                   name: http
+            pathType: Prefix
+    - host: emby-health.eaglepass.io
+      http:
+        paths:
+          - path: /
+            backend:
+              service:
+                name: emby-service
+                port:
+                  name: http2
             pathType: Prefix
 
 ---
@@ -47,10 +58,10 @@ spec:
       port: 8096
       targetPort: http
       protocol: TCP
-    # - name: http2
-    #   port: 8920
-    #   targetPort: http
-    #   protocol: TCP
+    - name: http2
+      port: 8920
+      targetPort: http
+      protocol: TCP
   selector:
     app: emby
 
