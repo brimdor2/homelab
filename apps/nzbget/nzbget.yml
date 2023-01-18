@@ -25,7 +25,7 @@ spec:
               service:
                 name: http
                 port:
-                  name: http
+                  number: 6789
             pathType: Prefix
 
 ---
