@@ -9,7 +9,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     hajimari.io/appName: Bazarr
-    hajimari.io/icon: surround-sound
+    hajimari.io/icon: subtitles
 spec:
   ingressClassName: nginx
   tls:
