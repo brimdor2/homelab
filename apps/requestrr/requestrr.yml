@@ -58,7 +58,7 @@ metadata:
     app.kubernetes.io/name: requestrr
     app.kubernetes.io/instance: requestrr
 spec:
-  clusterIP: 10.43.10.225
+  clusterIP: 10.43.10.25
   ports:
     - name: http
       port: 4545
