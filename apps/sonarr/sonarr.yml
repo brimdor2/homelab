@@ -98,7 +98,7 @@ spec:
             - name: TZ
               value: America/Chicago
           ports:
-            - name: sonarr
+            - name: http
               containerPort: 8989
 
       volumes:
