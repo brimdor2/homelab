@@ -45,12 +45,28 @@ spec:
       port: 6789
       targetPort: http
       protocol: TCP
-    - name: downloader
+  selector:
+    app: nzbget
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nzbget-downloader
+  labels:
+    app: nzbget
+    app.kubernetes.io/name: nzbget
+    app.kubernetes.io/instance: nzbget
+spec:
+  clusterIP: 10.0.10.13
+  ports:
+    - name: http
       port: 6789
-      targetPort: 7890
+      targetPort: 6789
       protocol: TCP
   selector:
     app: nzbget
+  type: ClusterIP
 
 ---
 apiVersion: apps/v1
@@ -94,8 +110,6 @@ spec:
               value: America/Chicago
           ports:
             - name: http
-              containerPort: 6789
-            - name: downloader
               containerPort: 6789
       volumes:
         - name: config
