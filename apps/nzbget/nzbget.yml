@@ -47,7 +47,7 @@ spec:
       protocol: TCP
     - name: downloader
       port: 6789
-      targetPort: 6789
+      targetPort: 7890
       protocol: TCP
   selector:
     app: nzbget
