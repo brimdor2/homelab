@@ -59,8 +59,6 @@ metadata:
   name: nzbget-deployment
   labels:
     app: nzbget
-    app.kubernetes.io/name: nzbget
-    app.kubernetes.io/instance: nzbget
 spec:
   replicas: 1
   strategy:
@@ -68,14 +66,10 @@ spec:
   selector:
     matchLabels:
       app: nzbget
-      app.kubernetes.io/name: nzbget
-      app.kubernetes.io/instance: nzbget
   template:
     metadata:
       labels:
         app: nzbget
-        app.kubernetes.io/name: nzbget
-        app.kubernetes.io/instance: nzbget
     spec:
       containers:
         - name: nzbget
