@@ -45,6 +45,10 @@ spec:
       port: 6789
       targetPort: http
       protocol: TCP
+    - name: downloader
+      port: 6789
+      targetPort: 6789
+      protocol: TCP
   selector:
     app: nzbget
 
@@ -90,6 +94,8 @@ spec:
               value: America/Chicago
           ports:
             - name: http
+              containerPort: 6789
+            - name: downloader
               containerPort: 6789
       volumes:
         - name: config
