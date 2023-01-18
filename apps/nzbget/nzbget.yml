@@ -49,8 +49,6 @@ spec:
       protocol: TCP
   selector:
     app: nzbget
-    app.kubernetes.io/name: nzbget
-    app.kubernetes.io/instance: nzbget
 
 ---
 apiVersion: apps/v1
