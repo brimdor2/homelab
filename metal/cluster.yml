@@ -1,12 +1,8 @@
-- name: Create Kubernetes cluster
+- name: Create Kubernetes cluster and Setup NFS
   hosts: metal
   roles:
     - k3s
     - automatic_upgrade
-
-- name: Setup NFS
-  hosts: metal
-  roles:
     - nfs_utils
 
 - name: Create some basic config
