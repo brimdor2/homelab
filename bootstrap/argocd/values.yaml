@@ -3,6 +3,7 @@ argo-cd:
     extraArgs:
       - --insecure
     config:
+      exec.enabled: 'true'
       statusbadge.enabled: 'true'
       resource.customizations.health.argoproj.io_Application: |
         hs = {}
