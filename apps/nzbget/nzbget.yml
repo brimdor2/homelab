@@ -38,8 +38,8 @@ spec:
   externalTrafficPolicy:
   ports:
     - name: http
-      port: http
-      targetPort: 6789
+      port: 6789
+      targetPort: http
       protocol: TCP
   selector:
     app: nzbget
