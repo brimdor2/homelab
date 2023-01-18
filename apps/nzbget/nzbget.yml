@@ -74,6 +74,8 @@ spec:
     metadata:
       labels:
         app: nzbget
+        app.kubernetes.io/name: nzbget
+        app.kubernetes.io/instance: nzbget
     spec:
       containers:
         - name: nzbget
