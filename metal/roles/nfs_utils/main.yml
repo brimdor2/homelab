@@ -1,4 +1,0 @@
-- name: Install NFS Utilities
-  ansible.builtin.dnf:
-    state: present
-    name: nfs-utils
