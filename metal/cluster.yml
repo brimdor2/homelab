@@ -4,7 +4,7 @@
     - k3s
     - automatic_upgrade
 
-- name: Create Kubernetes cluster
+- name: Setup NFS
   hosts: metal
   roles:
     - nfs_utils
