@@ -4,6 +4,7 @@ metadata:
   name: nzbget-ingress
   labels:
     app: nzbget
+    app.kubernetes.io/name: nzbget
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     external-dns.alpha.kubernetes.io/target: "homelab-tunnel.eaglepass.io"
@@ -35,6 +36,7 @@ metadata:
   name: nzbget-service
   labels:
     app: nzbget
+    app.kubernetes.io/name: nzbget
 spec:
   type: ClusterIP
   externalTrafficPolicy:
@@ -45,6 +47,7 @@ spec:
       protocol: TCP
   selector:
     app: nzbget
+    app.kubernetes.io/name: nzbget
 
 ---
 apiVersion: apps/v1
@@ -53,6 +56,7 @@ metadata:
   name: nzbget-deployment
   labels:
     app: nzbget
+    app.kubernetes.io/name: nzbget
 spec:
   replicas: 1
   strategy:
