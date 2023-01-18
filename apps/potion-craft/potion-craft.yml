@@ -8,6 +8,8 @@ metadata:
     app.kubernetes.io/instance: potion-craft
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
+    external-dns.alpha.kubernetes.io/target: "homelab-tunnel.eaglepass.io"
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
     hajimari.io/appName: Potion-Craft
     hajimari.io/icon: bottle-tonic-plus
 spec:
