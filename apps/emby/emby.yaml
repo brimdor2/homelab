@@ -1,40 +1,56 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: emby
-  labels:
-    app: emby
-
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: emby-ingress
   labels:
     app: emby
-  namespace: emby
-spec:
-  enabled: true
-  ingressClassName: nginx
+    app.kubernetes.io/name: emby
+    app.kubernetes.io/instance: emby
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
+    external-dns.alpha.kubernetes.io/target: "homelab-tunnel.eaglepass.io"
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
     hajimari.io/appName: Emby
-    hajimari.io/icon: movie-cog
-    # kubernetes.io/tls-acme: "true"
-  hosts:
-    - emby.eaglepass.io
+    hajimari.io/icon: download-network-outline
+spec:
+  ingressClassName: nginx
   tls:
-    - secretName: emby-tls-certificate
-      hosts:
+    - hosts:
         - emby.eaglepass.io
+      secretName: emby-tls-certificate
+  rules:
+    - host: emby.eaglepass.io
+      http:
+        paths:
+          - path: /
+            backend:
+              service:
+                name: emby-service
+                ports:
+                  - name: http1
+                  - name: http2
+            pathType: Prefix
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: emby-service
+  labels:
+    app: emby
+    app.kubernetes.io/name: emby
+    app.kubernetes.io/instance: emby
+spec:
+  type: ClusterIP
+  externalTrafficPolicy:
   ports:
-    - name: emby
+    - name: http1
       port: 8096
-      targetPort: 8096
+      targetPort: http1
       protocol: TCP
-    - name: emby-comp
+    - name: http2
       port: 8920
-      targetPort: 8920
+      targetPort: http2
       protocol: TCP
   selector:
     app: emby
@@ -43,7 +59,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: emby
+  name: emby-deployment
   labels:
     app: emby
   namespace: emby
@@ -87,9 +103,9 @@ spec:
             - name: TZ
               value: America/Chicago
           ports:
-            - name: emby
+            - name: http1
               containerPort: 8096
-            - name: emby-comp
+            - name: http2
               containerPort: 8920
       volumes:
         - name: config
