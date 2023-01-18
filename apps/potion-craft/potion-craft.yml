@@ -57,7 +57,7 @@ metadata:
     app: potion-craft
   namespace: potion-craft
 spec:
-  replicas: 3
+  replicas: 1
   strategy:
     type: Recreate
   selector:
