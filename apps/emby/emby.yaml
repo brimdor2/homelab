@@ -115,8 +115,8 @@ spec:
           ports:
             - name: http
               containerPort: 8096
-            # - name: http2
-            #   containerPort: 8920
+            - name: http2
+              containerPort: 8920
       volumes:
         - name: config
           iscsi:
