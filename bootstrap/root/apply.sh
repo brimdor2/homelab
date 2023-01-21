@@ -1,6 +1,5 @@
 #!/bin/sh
 
-set -ex
 
 VALUES="values.yaml"
 

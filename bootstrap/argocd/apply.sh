@@ -1,6 +1,5 @@
 #!/bin/sh
 
-set -ex
 
 helm template \
     --dependency-update \
