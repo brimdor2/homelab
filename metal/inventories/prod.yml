@@ -2,6 +2,13 @@ metal:
   children:
     masters:
       hosts:
+#         ash:
+#           {
+#             ansible_host: 10.0.50.120,
+#             mac: "18:c0:4d:41:bc:0e",
+#             disk: nvme01,
+#             network_interface: eno1,
+#           }
         charmander:
           {
             ansible_host: 10.0.50.121,
