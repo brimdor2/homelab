@@ -1,0 +1,87 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: potion-craft-ingress
+  labels:
+    app: potion-craft
+    app.kubernetes.io/name: potion-craft
+    app.kubernetes.io/instance: potion-craft
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    external-dns.alpha.kubernetes.io/target: "homelab-tunnel.eaglepass.io"
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+    hajimari.io/appName: Potion-Craft
+    hajimari.io/icon: bottle-tonic-plus
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - potion-craft.eaglepass.io
+      secretName: potion-craft-tls-certificate
+  rules:
+    - host: potion-craft.eaglepass.io
+      http:
+        paths:
+          - path: /
+            backend:
+              service:
+                name: potion-craft-service
+                port:
+                  name: http
+            pathType: Prefix
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: potion-craft-service
+  labels:
+    app: potion-craft
+    app.kubernetes.io/name: potion-craft
+    app.kubernetes.io/instance: potion-craft
+spec:
+  type: ClusterIP
+  externalTrafficPolicy:
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+      protocol: TCP
+  selector:
+    app: potion-craft
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: potion-craft-deployment
+  labels:
+    app: potion-craft
+  namespace: potion-craft
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: potion-craft
+  template:
+    metadata:
+      labels:
+        app: potion-craft
+    spec:
+      containers:
+        - name: potion-craft
+          image: brimdor/potion_craft_recipes
+          volumeMounts:
+            - name: data
+              mountPath: /app/instance
+          env:
+          ports:
+            - name: http
+              containerPort: 8080
+      volumes:
+        - name: data
+          nfs:
+            server: 10.0.50.1
+            path: /volume2/potion_craft
