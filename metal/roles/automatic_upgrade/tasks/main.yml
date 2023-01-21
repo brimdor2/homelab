@@ -1,9 +1,9 @@
-- name: Install packages for automatic upgrade and Setup NSF
+- name: Install packages for automatic upgrade and Setup NFS
   ansible.builtin.dnf:
     name:
       - dnf-automatic
       - dnf-utils
-      - nsf-utils
+      - nfs-utils
 
 - name: Copy automatic upgrade config file
   ansible.builtin.copy:
