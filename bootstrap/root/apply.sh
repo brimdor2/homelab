@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 VALUES="values.yaml"
 
 kubectl get ingress gitea --namespace gitea \

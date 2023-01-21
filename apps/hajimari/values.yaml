@@ -2,7 +2,7 @@ hajimari:
   image:  # TODO remove this https://github.com/toboshii/hajimari/blob/main/charts/hajimari/values.yaml
     tag: v0.2.0
   env:
-    TZ: America/Chicago
+    TZ: Asia/Ho_Chi_Minh
   ingress:
     main:
       enabled: true
@@ -11,7 +11,7 @@ hajimari:
         cert-manager.io/cluster-issuer: letsencrypt-prod
         hajimari.io/enable: 'false'
       hosts:
-        - host: &host home.eaglepass.io
+        - host: &host home.khuedoan.com
           paths:
             - path: /
               pathType: Prefix
@@ -27,9 +27,9 @@ hajimari:
       - name: Homelab
         links:
           - name: Documentation
-            url: https://homelab.eaglepass.io
+            url: https://homelab.khuedoan.com
           - name: Public GitHub repository
-            url: https://github.com/brimdor/homelab
+            url: https://github.com/khuedoan/homelab
       - name: Managed services
         links:
           - name: Terraform Cloud
