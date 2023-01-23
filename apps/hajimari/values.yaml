@@ -1,5 +1,5 @@
 hajimari:
-  image:  # TODO remove this https://github.com/toboshii/hajimari/blob/main/charts/hajimari/values.yaml
+  image: # TODO remove this https://github.com/toboshii/hajimari/blob/main/charts/hajimari/values.yaml
     tag: v0.2.0
   env:
     TZ: America/Chicago
@@ -9,7 +9,9 @@ hajimari:
       ingressClassName: nginx
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-prod
-        hajimari.io/enable: 'false'
+        external-dns.alpha.kubernetes.io/target: "homelab-tunnel.eaglepass.io"
+        external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+        hajimari.io/enable: "false"
       hosts:
         - host: &host home.eaglepass.io
           paths:
