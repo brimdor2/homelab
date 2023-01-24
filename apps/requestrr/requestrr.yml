@@ -90,7 +90,7 @@ spec:
     spec:
       containers:
         - name: requestrr
-          image: darkalfx/requestrr:latest
+          image: lscr.io/linuxserver/requestrr:latest
           volumeMounts:
             - name: config
               mountPath: /root/config
