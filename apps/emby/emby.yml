@@ -106,7 +106,7 @@ spec:
             - name: backup
               mountPath: /external_backup
             - name: embyproc
-              mountPath: /proc
+              mountPath: /proc/sys/fs/inotify
           env:
             - name: PUID
               value: "0"
