@@ -105,6 +105,8 @@ spec:
               mountPath: /data/tv2
             - name: backup
               mountPath: /external_backup
+            - name: emby_proc
+              mountPath: /proc
           env:
             - name: PUID
               value: "0"
@@ -157,3 +159,7 @@ spec:
           nfs:
             server: 10.0.50.1
             path: /volume26/Neverland/tv
+        - name: emby_proc
+          nfs:
+            server: 10.0.50.1
+            path: /volume1/emby_proc
