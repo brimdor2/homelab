@@ -25,9 +25,9 @@ hajimari:
     defaultEnable: true
     name: "Chris"
     title: "Home"
-    showAppStatus: "true"
-    alwaysTargetBlank: "true"
-    showAppUrls: "false"
+    showAppStatus: true
+    alwaysTargetBlank: true
+    showAppUrls: false
     namespaceSelector:
       any: true
     groups:
