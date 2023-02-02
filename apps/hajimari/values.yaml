@@ -43,3 +43,9 @@ hajimari:
             url: https://app.terraform.io
           - name: Cloudflare
             url: https://dash.cloudflare.com
+      - name: Shortcuts
+        links:
+          - name: GMail
+            url: https://gmail.com
+          - name: Emby
+            url: https://app.emby.media
