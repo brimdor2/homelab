@@ -109,7 +109,7 @@ spec:
           iscsi:
             targetPortal: 10.0.50.1:3260
             portals: ["10.0.50.1:3260"]
-            iqn: iqn.2011-08.com.asustor:as5304t-8ddc73.requestrr-config
+            iqn: iqn.2011-08.com.asustor:as5304t-8ddc73.requestrr
             lun: 0
             fsType: ext4
             readOnly: false
