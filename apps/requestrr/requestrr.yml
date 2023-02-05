@@ -93,7 +93,7 @@ spec:
           image: lscr.io/linuxserver/requestrr:latest
           volumeMounts:
             - name: config
-              mountPath: /root/config
+              mountPath: /config
           env:
             - name: PUID
               value: "1000"
