@@ -117,12 +117,6 @@ spec:
               containerPort: 8096
             - name: http2
               containerPort: 8920
-          resources:
-            limits:
-              devices:
-              - name: dev-dri
-                type: "c"
-                path: "/dev/dri"
       volumes:
         - name: config
           iscsi:
