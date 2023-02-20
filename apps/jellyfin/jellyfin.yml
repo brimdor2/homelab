@@ -105,24 +105,24 @@ spec:
               value: "0"
             - name: TZ
               value: America/Chicago
-            - name: JELLYFIN_PublishedServerUrl
-              value: "192.168.1.27"
+            # - name: JELLYFIN_PublishedServerUrl
+            #   value: "192.168.1.27"
           ports:
             - name: http
               containerPort: 8096
       volumes:
         - name: config
           iscsi:
-            targetPortal: 192.168.1.2:3260
-            portals: ["192.168.1.2:3260"]
+            targetPortal: 10.0.50.1:3260
+            portals: ["10.0.50.1:3260"]
             iqn: iqn.2011-08.com.asustor:as5304t-8ddc73.jellyfinconfig
             lun: 0
             fsType: ext4
             readOnly: false
         - name: transcode
           iscsi:
-            targetPortal: 192.168.1.2:3260
-            portals: ["192.168.1.2:3260"]
+            targetPortal: 10.0.50.1:3260
+            portals: ["10.0.50.1:3260"]
             iqn: iqn.2011-08.com.asustor:as5304t-8ddc73.jellyfintranscode
             lun: 0
             fsType: ext4
