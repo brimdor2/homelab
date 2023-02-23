@@ -107,9 +107,9 @@ spec:
               mountPath: /external_backup
           env:
             - name: PUID
-              value: "0"
+              value: "1000"
             - name: PGID
-              value: "0"
+              value: "1000"
             - name: TZ
               value: America/Chicago
           ports:
