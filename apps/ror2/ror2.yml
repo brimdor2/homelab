@@ -102,15 +102,15 @@ spec:
             - name: R2_HOSTNAME
               value: "Broville"
             - name: R2_SV_PORT
-              value: 27015
+              value: "27015"
             - name: R2_PSW
               value: "5thWard"
             - name: R2_PLAYERS
-              value: 4
+              value: "4"
             - name: R2_ENABLE_MODS
-              value: 1
+              value: "1"
             - name: R2_HEARTBEAT
-              value: 1
+              value: "1"
             - name: R2_TAGS
               value: "bros"
             - name: TZ
