@@ -97,7 +97,7 @@ spec:
           image: avivace/ror2server
           volumeMounts:
             - name: config
-              mountPath: /root
+              mountPath: /root/ror2-dedicated
           env:
             # - name: PUID
             #   value: "0"
