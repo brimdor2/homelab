@@ -111,8 +111,8 @@ spec:
               value: "5thWard"
             - name: R2_PLAYERS
               value: "4"
-            - name: R2_ENABLE_MODS
-              value: "1"
+            # - name: R2_ENABLE_MODS
+            #   value: "1"
             # - name: R2_QUERY_PORT
             #   value: "27015"
             - name: R2_HEARTBEAT
