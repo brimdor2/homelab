@@ -96,8 +96,8 @@ spec:
         - name: ror2
           image: avivace/ror2server
           volumeMounts:
-            - name: config
-              mountPath: /root/ror2-dedicated
+            - name: mods
+              mountPath: /home/steam/ror2ds-mods
           env:
             # - name: PUID
             #   value: "0"
@@ -132,7 +132,7 @@ spec:
               containerPort: 27016
 
       volumes:
-        - name: config
+        - name: mods
           nfs:
             server: 10.0.50.1
             path: /volume1/ror2
