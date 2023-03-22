@@ -99,10 +99,10 @@ spec:
             - name: config
               mountPath: /root
           env:
-            - name: PUID
-              value: "0"
-            - name: PGID
-              value: "0"
+            # - name: PUID
+            #   value: "0"
+            # - name: PGID
+            #   value: "0"
             - name: R2_HOSTNAME
               value: "Broville"
             - name: R2_SV_PORT
@@ -119,10 +119,10 @@ spec:
               value: "1"
             - name: R2_TAGS
               value: "bros"
-            - name: STEAMAPPDIR
-              value: "/home/steam/ror2-dedicated"
-            - name: MODDIR
-              value: "/home/steam/ror2ds-mods"
+            # - name: STEAMAPPDIR
+            #   value: "/home/steam/ror2-dedicated"
+            # - name: MODDIR
+            #   value: "/home/steam/ror2ds-mods"
             - name: TZ
               value: America/Chicago
           ports:
