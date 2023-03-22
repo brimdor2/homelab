@@ -99,10 +99,6 @@ spec:
             - name: config
               mountPath: /home
           env:
-            - name: PUID
-              value: "1000"
-            - name: PGID
-              value: "1000"
             - name: R2_HOSTNAME
               value: "Broville"
             - name: R2_SV_PORT
