@@ -112,7 +112,7 @@ spec:
             - name: R2_PLAYERS
               value: "4"
             - name: R2_ENABLE_MODS
-              value: "0"
+              value: "1"
             - name: R2_QUERY_PORT
               value: "27015"
             - name: R2_HEARTBEAT
