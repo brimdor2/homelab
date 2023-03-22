@@ -97,8 +97,12 @@ spec:
           image: avivace/ror2server
           volumeMounts:
             - name: config
-              mountPath: /home
+              mountPath: /root
           env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
             - name: R2_HOSTNAME
               value: "Broville"
             - name: R2_SV_PORT
