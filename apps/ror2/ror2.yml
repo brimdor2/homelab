@@ -97,7 +97,7 @@ spec:
           image: avivace/ror2server
           volumeMounts:
             - name: config
-              mountPath: /home/steam
+              mountPath: /home
           env:
             - name: PUID
               value: "1000"
