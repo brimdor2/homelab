@@ -126,8 +126,10 @@ spec:
           ports:
             - name: connect
               containerPort: 27015
+              protocol: UDP
             - name: healthcheck
               containerPort: 27016
+              protocol: UDP
 
       volumes:
         - name: mods
