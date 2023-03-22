@@ -115,8 +115,8 @@ spec:
             #   value: "1"
             # - name: R2_QUERY_PORT
             #   value: "27015"
-            - name: R2_HEARTBEAT
-              value: "1"
+            # - name: R2_HEARTBEAT
+            #   value: "1"
             - name: R2_TAGS
               value: "bros"
             - name: MODDIR
