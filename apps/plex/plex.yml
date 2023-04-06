@@ -162,7 +162,7 @@ spec:
             # - name: ALLOWED_NETWORKS
             #   value: 192.168.1.0/16
             - name: PLEX_CLAIM
-              value: claim-EvcHz2i2cg-cyosh9hto
+              value: claim-cMLEKNtUeHF3zwhQAfX6
           ports:
             - name: http
               containerPort: 32400
