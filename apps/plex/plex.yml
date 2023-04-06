@@ -1,0 +1,220 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: plex-ingress
+  labels:
+    app: plex
+    app.kubernetes.io/name: plex
+    app.kubernetes.io/instance: plex
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    external-dns.alpha.kubernetes.io/target: "homelab-tunnel.eaglepass.io"
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+    hajimari.io/appName: Plex
+    hajimari.io/icon: movie-roll
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - plex.eaglepass.io
+        - plex-health.eaglepass.io
+      secretName: plex-tls-certificate
+  rules:
+    - host: plex.eaglepass.io
+      http:
+        paths:
+          - path: /
+            backend:
+              service:
+                name: plex-service
+                port:
+                  name: http
+            pathType: Prefix
+    - host: plex-health.eaglepass.io
+      http:
+        paths:
+          - path: /
+            backend:
+              service:
+                name: plex-service
+                port:
+                  name: http2
+            pathType: Prefix
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: plex-service
+  labels:
+    app: plex
+    app.kubernetes.io/name: plex
+    app.kubernetes.io/instance: plex
+spec:
+  type: ClusterIP
+  externalTrafficPolicy:
+  ports:
+    - name: http
+      port: 32400
+      targetPort: http
+      protocol: TCP
+    - name: http2
+      port: 8324
+      targetPort: http
+      protocol: TCP
+    - name: http3
+      port: 32469
+      targetPort: http
+      protocol: TCP
+  selector:
+    app: plex
+
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: plex-udp
+#   labels:
+#     app: plex
+#     app.kubernetes.io/name: plex
+#     app.kubernetes.io/instance: plex
+# spec:
+#   ports:
+#     - name: plex-udp
+#       port: 1900
+#       targetPort: 1900
+#       protocol: UDP
+#     - name: plex-disc
+#       port: 5353
+#       targetPort: 5353
+#       protocol: UDP
+#     - name: plex-gdm1
+#       port: 32410
+#       targetPort: 32410
+#       protocol: UDP
+#     - name: plex-gdm2
+#       port: 32412
+#       targetPort: 32412
+#       protocol: UDP
+#     - name: plex-gdm3
+#       port: 32413
+#       targetPort: 32413
+#       protocol: UDP
+#     - name: plex-gdm4
+#       port: 32414
+#       targetPort: 32414
+#       protocol: UDP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plex
+  labels:
+    app: plex
+  namespace: plex
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: plex
+  template:
+    metadata:
+      labels:
+        app: plex
+    spec:
+      containers:
+        - name: plex
+          image: lscr.io/linuxserver/plex:latest
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: profiles
+              mountPath: /usr/lib/plexmediaserver/Resources/Profiles
+            - name: transcode
+              mountPath: /transcode
+            - name: movies
+              mountPath: /movies
+            - name: tv
+              mountPath: /tv
+            - name: movies2
+              mountPath: /movies2
+            - name: tv2
+              mountPath: /tv2
+            - name: backup
+              mountPath: /plex-backup
+          env:
+            - name: VERSION
+              value: docker
+            - name: PUID
+              value: "0"
+            - name: PGID
+              value: "0"
+            - name: TZ
+              value: America/Chicago
+            - name: DOCKER_MODS
+              value: linuxserver/mods:plex-absolute-hama
+            # - name: ADVERTISE_IP
+            #   value: 'http://192.168.1.10:32400/'
+            # - name: ALLOWED_NETWORKS
+            #   value: 192.168.1.0/16
+            - name: PLEX_CLAIM
+              value: claim-HpLzGLCtzKEXf7c1T69S
+          ports:
+            - name: http
+              containerPort: 32400
+            - name: http2
+              containerPort: 32469
+            - name: http3
+              containerPort: 8324
+
+      volumes:
+        - name: config
+          nfs:
+            server: 10.0.50.1
+            path: /volume1/plex-config
+          # iscsi:
+          #   targetPortal: 10.0.50.1:3260
+          #   portals: ["10.0.50.1:3260"]
+          #   iqn: iqn.2011-08.com.asustor:as5304t-8ddc73.plex
+          #   lun: 0
+          #   fsType: ext4
+          #   readOnly: false
+        - name: profiles
+          nfs:
+            server: 10.0.50.1
+            path: /volume1/plex-profiles
+        - name: transcode
+          # nfs:
+          #   server: 10.0.50.1
+          #   path: /volume1/transcode
+          iscsi:
+            targetPortal: 10.0.50.1:3260
+            portals: ["10.0.50.1:3260"]
+            iqn: iqn.2011-08.com.asustor:as5304t-8ddc73.plextranscode
+            lun: 0
+            fsType: ext4
+            readOnly: false        
+        - name: movies
+          nfs:
+            server: 10.0.50.1
+            path: /volume3/Madripoor/movies
+        - name: tv
+          nfs:
+            server: 10.0.50.1
+            path: /volume3/Wakanda/tv
+        - name: movies2
+          nfs:
+            server: 10.0.50.1
+            path: /volume3/Asgard/movies
+        - name: tv2
+          nfs:
+            server: 10.0.50.1
+            path: /volume3/Neverland/tv
+        - name: backup
+          nfs:
+            server: 10.0.50.1
+            path: /volume2/plex-backup
