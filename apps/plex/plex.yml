@@ -150,9 +150,9 @@ spec:
             - name: VERSION
               value: docker
             - name: PUID
-              value: "1000"
+              value: "0"
             - name: PGID
-              value: "1000"
+              value: "0"
             - name: TZ
               value: America/Chicago
             - name: DOCKER_MODS
@@ -162,7 +162,7 @@ spec:
             # - name: ALLOWED_NETWORKS
             #   value: 192.168.1.0/16
             - name: PLEX_CLAIM
-              value: claim-7wun8qNJGBizx8sLXx_n
+              value: claim-zmTexfM5zs1xxN4VgYbA
           ports:
             - name: http
               containerPort: 32400
