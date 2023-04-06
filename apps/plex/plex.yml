@@ -87,7 +87,7 @@ metadata:
     app.kubernetes.io/name: plex
     app.kubernetes.io/instance: plex
 spec:
-  clusterIP: 10.43.10.220
+  clusterIP: 10.0.10.1
   ports:
     - name: http
       port: 32400
