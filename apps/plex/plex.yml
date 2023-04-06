@@ -128,7 +128,7 @@ spec:
     spec:
       containers:
         - name: plex
-          image: lscr.io/linuxserver/plex:latest
+          image: linuxserver/plex:latest
           volumeMounts:
             - name: config
               mountPath: /config
@@ -162,7 +162,7 @@ spec:
             # - name: ALLOWED_NETWORKS
             #   value: 192.168.1.0/16
             - name: PLEX_CLAIM
-              value: claim-BK5-HWBtiKtyU1nZpPdi
+              value: claim-EvcHz2i2cg-cyosh9hto
           ports:
             - name: http
               containerPort: 32400
