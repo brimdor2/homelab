@@ -67,6 +67,13 @@ spec:
       port: 32469
       targetPort: http
       protocol: TCP
+    - name: udp
+      port: 1900
+      targetPort: 1900
+      protocol: UDP
+    - name: udp2
+      port: 5353
+      targetPort: 5353
   selector:
     app: plex
 
@@ -190,6 +197,10 @@ spec:
               containerPort: 32469
             - name: http3
               containerPort: 8324
+            - name: udp
+              containerPort: 1900
+            - name: udp2
+              containerPort: 5353
 
       volumes:
         - name: config
