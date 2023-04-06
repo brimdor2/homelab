@@ -162,7 +162,7 @@ spec:
             # - name: ALLOWED_NETWORKS
             #   value: 192.168.1.0/16
             - name: PLEX_CLAIM
-              value: claim-HpLzGLCtzKEXf7c1T69S
+              value: claim-iyhzib8yd7Eg86z_f-hq
           ports:
             - name: http
               containerPort: 32400
@@ -209,11 +209,11 @@ spec:
         - name: movies2
           nfs:
             server: 10.0.50.1
-            path: /volume3/Asgard/movies
+            path: /volume25/Asgard/movies
         - name: tv2
           nfs:
             server: 10.0.50.1
-            path: /volume3/Neverland/tv
+            path: /volume25/Neverland/tv
         - name: backup
           nfs:
             server: 10.0.50.1
