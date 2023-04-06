@@ -97,6 +97,28 @@ spec:
     app: plex
   type: ClusterIP
 
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: plex-nodeport
+  labels:
+    app: plex
+    app.kubernetes.io/name: plex
+    app.kubernetes.io/instance: plex
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      nodePort: 32480
+      name: plex-http
+    - port: 443
+      nodePort: 32443
+      name: plex-https
+  selector:
+    app: plex
+
 # ---
 # apiVersion: v1
 # kind: Service
@@ -191,6 +213,10 @@ spec:
             - name: PLEX_CLAIM
               value: claim-cMLEKNtUeHF3zwhQAfX6
           ports:
+            - name: plex-http
+              containerPort: 32480
+            - name: plex-https
+              containerPort: 32443
             - name: http
               containerPort: 32400
             - name: http2
