@@ -150,9 +150,9 @@ spec:
             - name: VERSION
               value: docker
             - name: PUID
-              value: 1000
+              value: "1000"
             - name: PGID
-              value: 1000
+              value: "1000"
             - name: TZ
               value: America/Chicago
             - name: DOCKER_MODS
