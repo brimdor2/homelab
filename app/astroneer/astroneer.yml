@@ -1,0 +1,101 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: astroneer-ingress
+  labels:
+    app: astroneer
+    app.kubernetes.io/name: astroneer
+    app.kubernetes.io/instance: astroneer
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - astroneer.eaglepass.io
+      secretName: astroneer-tls-certificate
+  rules:
+    - host: astroneer.eaglepass.io
+      http:
+        paths:
+          - path: /
+            backend:
+              service:
+                name: astroneer-service
+                  port:
+                    name: http
+            pathType: Prefix
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: astroneer-service
+  labels:
+    app: astroneer
+    app.kubernetes.io/name: astroneer
+    app.kubernetes.io/instance: astroneer
+spec:
+  type: ClusterIP
+  externalTrafficPolicy:
+  ports:
+    - name: http
+      port: 30877
+      targetPort: http
+      protocol: UDP
+  selector:
+    app: astroneer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: astroneer-deployment
+  labels:
+    app: astroneer
+  namespace: astroneer
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: astroneer
+  template:
+    metadata:
+      labels:
+        app: astroneer
+    spec:
+      containers:
+        - name: astroneer
+          image: registry.gitlab.com/altercode/astroneer-linux:latest
+          # volumeMounts:
+          #   - name: config
+          #     mountPath: /config
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: OWNER_NAME
+              value: "brimdor"
+            - name: OWNER_GUID
+              value: "0"
+            - name: TZ
+              value: America/Chicago
+          ports:
+            - name: http
+              containerPort: 30877
+      # volumes:
+      # - name: config
+      #   iscsi:
+      #     targetPortal: 10.0.50.1:3260
+      #     portals: ["10.0.50.1:3260"]
+      #     iqn: iqn.2011-08.com.asustor:as5304t-8ddc73.astroneer
+      #     lun: 0
+      #     fsType: ext4
+      #     readOnly: false
+      # - name: downloads
+      #   nfs:
+      #     server: 10.0.50.1
+      #     path: /volume2/downloads
