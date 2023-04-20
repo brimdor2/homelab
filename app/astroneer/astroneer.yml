@@ -73,10 +73,6 @@ spec:
           #   - name: config
           #     mountPath: /config
           env:
-            - name: PUID
-              value: "1000"
-            - name: PGID
-              value: "1000"
             - name: OWNER_NAME
               value: "brimdor"
             - name: OWNER_GUID
