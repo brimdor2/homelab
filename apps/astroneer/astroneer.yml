@@ -77,9 +77,9 @@ spec:
             - name: PGID
               value: "1000"
             - name: OWNER_NAME
-              value: brimdor
+              value: "brimdor"
             - name: OWNER_GUID
-              value: 0
+              value: "0"
             - name: TZ
               value: America/Chicago
           ports:
