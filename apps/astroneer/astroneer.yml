@@ -40,7 +40,7 @@ spec:
   ports:
     - name: http
       port: 30877
-      targetPort: 30877
+      targetPort: http
       protocol: UDP
   selector:
     app: astroneer
