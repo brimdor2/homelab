@@ -1,11 +1,11 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: astroneer-ds-ingress
+  name: astroneer-ingress
   labels:
-    app: astroneer-ds
-    app.kubernetes.io/name: astroneer-ds
-    app.kubernetes.io/instance: astroneer-ds
+    app: astroneer
+    app.kubernetes.io/name: astroneer
+    app.kubernetes.io/instance: astroneer
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
@@ -21,7 +21,7 @@ spec:
           - path: /
             backend:
               service:
-                name: astroneer-ds-service
+                name: astroneer-service
                   port:
                     name: http
             pathType: Prefix
@@ -30,11 +30,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: astroneer-ds-service
+  name: astroneer-service
   labels:
-    app: astroneer-ds
-    app.kubernetes.io/name: astroneer-ds
-    app.kubernetes.io/instance: astroneer-ds
+    app: astroneer
+    app.kubernetes.io/name: astroneer
+    app.kubernetes.io/instance: astroneer
 spec:
   type: ClusterIP
   externalTrafficPolicy:
@@ -44,30 +44,30 @@ spec:
       targetPort: http
       protocol: UDP
   selector:
-    app: astroneer-ds
+    app: astroneer
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: astroneer-ds-deployment
+  name: astroneer-deployment
   labels:
-    app: astroneer-ds
-  namespace: astroneer-ds
+    app: astroneer
+  namespace: astroneer
 spec:
   replicas: 1
   strategy:
     type: Recreate
   selector:
     matchLabels:
-      app: astroneer-ds
+      app: astroneer
   template:
     metadata:
       labels:
-        app: astroneer-ds
+        app: astroneer
     spec:
       containers:
-        - name: astroneer-ds
+        - name: astroneer
           image: registry.gitlab.com/altercode/astroneer-linux:latest
           # volumeMounts:
           #   - name: config
