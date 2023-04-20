@@ -22,7 +22,7 @@ spec:
             backend:
               service:
                 name: astroneer-service
-                port: http
+                  port: 30877
             pathType: Prefix
 
 ---
