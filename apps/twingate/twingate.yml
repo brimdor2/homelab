@@ -16,6 +16,10 @@ spec:
     metadata:
       labels:
         app: twingate
+  securityContext:
+    sysctls:
+    - name: net.ipv4.ping_group_range
+      value: "0 2147483647"
     spec:
       containers:
         - name: twingate-daft-beagle
@@ -31,7 +35,3 @@ spec:
               value: "eaglepass"
             - name: TZ
               value: America/Chicago
-          securityContext:
-            sysctls:
-            - name: net.ipv4.ping_group_range
-              value: "0 2147483647"
