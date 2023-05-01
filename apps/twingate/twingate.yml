@@ -32,7 +32,7 @@ spec:
             - name: REFRESH_TOKEN
               value: "tmfQxx2iTxHsbItMh3n-nQTvmUEqXpGZzccNHiplL4-qceOOth5k8Qe2zq11YrBLqjCQZG38Fc3JBenK6gCXTev6EloyhF6RLSGayFCzD3XQE4bVpaZtmv-ZKHomFvHj3S_Chw"
             - name: TWINGATE_LABEL_HOSTNAME
-              value: "eaglepass"
+              value: "eaglepass1"
             - name: TZ
               value: America/Chicago
         - name: twingate-blond-hawk
@@ -45,14 +45,6 @@ spec:
             - name: REFRESH_TOKEN
               value: "3BW9TqYhawcgpN2rSsf1yhgfKNetfINUphz8uoOKFePpet8g8sqHAqodNZULPgxdXMDBW62YoFBljDsXutxUXhprk2lPd-EL8GraYN1ky0StAhvFnF0WhXN9gapyTpWdyq3mdg"
             - name: TWINGATE_LABEL_HOSTNAME
-              value: "eaglepass"
+              value: "eaglepass2"
             - name: TZ
               value: America/Chicago
-
-
-
-
-
-
-
-            
