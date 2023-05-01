@@ -35,6 +35,19 @@ spec:
               value: "eaglepass"
             - name: TZ
               value: America/Chicago
+        - name: twingate-blond-hawk
+          image: twingate/connector:1
+          env:
+            - name: TENANT_URL
+              value: "https://eaglepass.twingate.com"
+            - name: ACCESS_TOKEN
+              value: "eyJhbGciOiJFUzI1NiIsImtpZCI6InBvaHhHbUlsRTM4aGttdENiNmt4NWVyS3g4d1VVMDNDN1NQRGZXRDJVNkkiLCJ0eXAiOiJEQVQifQ.eyJudCI6IkFOIiwiYWlkIjoiNjUxMTYiLCJkaWQiOiI1NDYxNDYiLCJqdGkiOiI0YzhjZGM2My1jMjU2LTQ2OTUtOWRhZi0yMGYwZDJmZDVhYzkiLCJpc3MiOiJ0d2luZ2F0ZSIsImF1ZCI6ImVhZ2xlcGFzcyIsImV4cCI6MTY4Mjk1NTkzOSwiaWF0IjoxNjgyOTUyMzM5LCJ2ZXIiOiI0IiwidGlkIjoiMjQ1NjgiLCJybnciOjE2ODI5NTI2MzksInJuZXRpZCI6IjMxNDA3In0.ugDJq0zWOBDCwQoUMPr3x4MmXgxYQW3E1wJ3cljMcPfjh3OTsucgBWCKFQLRfxBgox8lUcvdp_LT70oug5Em0A"
+            - name: REFRESH_TOKEN
+              value: "3BW9TqYhawcgpN2rSsf1yhgfKNetfINUphz8uoOKFePpet8g8sqHAqodNZULPgxdXMDBW62YoFBljDsXutxUXhprk2lPd-EL8GraYN1ky0StAhvFnF0WhXN9gapyTpWdyq3mdg"
+            - name: TWINGATE_LABEL_HOSTNAME
+              value: "eaglepass"
+            - name: TZ
+              value: America/Chicago
 
 
 
