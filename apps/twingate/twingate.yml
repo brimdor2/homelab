@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: twingate-deployment
+  labels:
+    app: twingate
+  namespace: twingate
+spec:
+  replicas: 2
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: twingate
+  template:
+    metadata:
+      labels:
+        app: twingate
+    spec:
+      containers:
+        - name: twingate-daft-beagle
+          image: twingate/connector:1
+          env:
+            - name: TENANT_URL
+              value: "https://eaglepass.twingate.com"
+            - name: ACCESS_TOKEN
+              value: "eyJhbGciOiJFUzI1NiIsImtpZCI6InBvaHhHbUlsRTM4aGttdENiNmt4NWVyS3g4d1VVMDNDN1NQRGZXRDJVNkkiLCJ0eXAiOiJEQVQifQ.eyJudCI6IkFOIiwiYWlkIjoiNjUxMTUiLCJkaWQiOiI1NDYxNDUiLCJqdGkiOiJjNmE3NDA2Ni0yMTFiLTQ1ZGMtODlhYS1hZTY2MzA3YzZiYTIiLCJpc3MiOiJ0d2luZ2F0ZSIsImF1ZCI6ImVhZ2xlcGFzcyIsImV4cCI6MTY4Mjk1NTA2OCwiaWF0IjoxNjgyOTUxNDY4LCJ2ZXIiOiI0IiwidGlkIjoiMjQ1NjgiLCJybnciOjE2ODI5NTE3NjgsInJuZXRpZCI6IjMxNDA3In0.7ZU9-FaSaHqG-DEI16R8iywvq5Ine9Wypjl3-FbHXFNjGz_CP6dtd49T0VupIEOzJmq6046rpAj11adDwp5LaQ"
+            - name: REFRESH_TOKEN
+              value: "tmfQxx2iTxHsbItMh3n-nQTvmUEqXpGZzccNHiplL4-qceOOth5k8Qe2zq11YrBLqjCQZG38Fc3JBenK6gCXTev6EloyhF6RLSGayFCzD3XQE4bVpaZtmv-ZKHomFvHj3S_Chw"
+            - name: TWINGATE_LABEL_HOSTNAME
+              value: "eaglepass"
+            - name: TZ
+              value: America/Chicago
+          securityContext:
+            sysctls:
+            - name: net.ipv4.ping_group_range
+              value: "0 2147483647"
