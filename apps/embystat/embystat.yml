@@ -11,7 +11,7 @@ metadata:
     external-dns.alpha.kubernetes.io/target: "homelab-tunnel.eaglepass.io"
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
     hajimari.io/appName: EmbyStat
-    hajimari.io/icon: movie-roll
+    hajimari.io/icon: chart-donut-variant
 spec:
   ingressClassName: nginx
   tls:
