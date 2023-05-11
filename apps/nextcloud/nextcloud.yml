@@ -80,9 +80,9 @@ spec:
               mountPath: /data
           env:
             - name: PUID
-              value: "998"
+              value: "1000"
             - name: PGID
-              value: "998"
+              value: "1000"
             - name: TZ
               value: America/Chicago
           ports:
