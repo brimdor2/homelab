@@ -90,6 +90,7 @@ spec:
           ports:
             - name: http
               containerPort: 443
+              #updating
       volumes:
         - name: config
           nfs:
