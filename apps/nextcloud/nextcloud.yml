@@ -1,0 +1,99 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nextcloud-ingress
+  labels:
+    app: nextcloud
+    app.kubernetes.io/name: nextcloud
+    app.kubernetes.io/instance: nextcloud
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    external-dns.alpha.kubernetes.io/target: "homelab-tunnel.eaglepass.io"
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+    hajimari.io/appName: Nextcloud
+    hajimari.io/icon: cloud-search
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - drive.eaglepass.io
+      secretName: nextcloud-tls-certificate
+  rules:
+    - host: drive.eaglepass.io
+      http:
+        paths:
+          - path: /
+            backend:
+              service:
+                name: nextcloud-service
+                port:
+                  name: http
+            pathType: Prefix
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nextcloud-service
+  labels:
+    app: nextcloud
+    app.kubernetes.io/name: nextcloud
+    app.kubernetes.io/instance: nextcloud
+spec:
+  type: ClusterIP
+  externalTrafficPolicy:
+  ports:
+    - name: http
+      port: 443
+      targetPort: http
+      protocol: TCP
+  selector:
+    app: nextcloud
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextcloud-deployment
+  labels:
+    app: nextcloud
+  namespace: nextcloud
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: nextcloud
+  template:
+    metadata:
+      labels:
+        app: nextcloud
+    spec:
+      containers:
+        - name: nextcloud
+          image: lscr.io/linuxserver/nextcloud:latest
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: data
+              mountPath: /data
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: America/Chicago
+          ports:
+            - name: http
+              containerPort: 443
+      volumes:
+        - name: config
+          nfs:
+            server: 10.0.50.1
+            path: /volume2/nextcloud_config
+        - name: data
+          nfs:
+            server: 10.0.50.1
+            path: /volume25/nextcloud_data
