@@ -97,12 +97,8 @@ spec:
               mountPath: /dev/dri
             - name: movies
               mountPath: /data/movies
-            - name: movies2
-              mountPath: /data/movies2
             - name: tv
               mountPath: /data/tv
-            - name: tv2
-              mountPath: /data/tv2
             - name: backup
               mountPath: /external_backup
           env:
@@ -145,10 +141,7 @@ spec:
           nfs:
             server: 10.0.50.3
             path: /mnt/usr/tv
-          nfs:
-            server: 10.0.50.1
-            path: /volume25/Neverland/tv
         - name: config
           nfs:
-            server: 10.0.50.1
-            path: /volume1/emby_config
+            server: 10.0.50.3
+            path: /mnt/usr/emby_config
