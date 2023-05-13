@@ -103,9 +103,9 @@ spec:
               mountPath: /apps
           env:
             - name: PUID
-              value: "0"
+              value: "1000"
             - name: PGID
-              value: "0"
+              value: "1000"
             - name: TZ
               value: America/Chicago
           ports:
@@ -113,34 +113,22 @@ spec:
               containerPort: 6789
       volumes:
         - name: config
-          iscsi:
-            targetPortal: 10.0.50.1:3260
-            portals: ["10.0.50.1:3260"]
-            iqn: iqn.2011-08.com.asustor:as5304t-8ddc73.nzbgetconfig
-            lun: 0
-            fsType: ext4
-            readOnly: false
+          nfs:
+            server: 10.0.50.3
+            path: /mnt/usr/nzbget_config
         - name: data
-          iscsi:
-            targetPortal: 10.0.50.1:3260
-            portals: ["10.0.50.1:3260"]
-            iqn: iqn.2011-08.com.asustor:as5304t-8ddc73.nzbgetdata
-            lun: 0
-            fsType: ext4
-            readOnly: false
+          nfs:
+            server: 10.0.50.3
+            path: /mnt/usr/nzbget_data
         - name: intermediate
-          iscsi:
-            targetPortal: 10.0.50.1:3260
-            portals: ["10.0.50.1:3260"]
-            iqn: iqn.2011-08.com.asustor:as5304t-8ddc73.nzbgetinter
-            lun: 0
-            fsType: ext4
-            readOnly: false
+          nfs:
+            server: 10.0.50.3
+            path: /mnt/usr/nzbget_intermediate
         - name: downloads
           nfs:
-            server: 10.0.50.1
-            path: /volume2/downloads
+            server: 10.0.50.3
+            path: /mnt/usr/downloads
         - name: apps
           nfs:
-            server: 10.0.50.1
-            path: /volume3/Tatooine/apps
+            server: 10.0.50.3
+            path: /mnt/usr/apps
