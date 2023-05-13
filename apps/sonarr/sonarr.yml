@@ -97,15 +97,11 @@ spec:
               mountPath: /downloads
             - name: tv
               mountPath: /tv
-            - name: tv2
-              mountPath: /tv2
           env:
             - name: PUID
-              value: "0"
-              # value: "1000"
+              value: "1000"
             - name: PGID
-              value: "0"
-              # value: "1000"
+              value: "1000"
             - name: PATH
               value: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
             - name: HOME
@@ -124,22 +120,14 @@ spec:
 
       volumes:
         - name: config
-          iscsi:
-            targetPortal: 10.0.50.1:3260
-            portals: ["10.0.50.1:3260"]
-            iqn: iqn.2011-08.com.asustor:as5304t-8ddc73.sonarr
-            lun: 0
-            fsType: ext4
-            readOnly: false
+          nfs:
+            server: 10.0.50.3
+            path: /mnt/usr/sonarr_config
         - name: downloads
           nfs:
-            server: 10.0.50.1
-            path: /volume2/downloads
+            server: 10.0.50.3
+            path: /mnt/usr/downloads
         - name: tv
           nfs:
-            server: 10.0.50.1
-            path: /volume3/Wakanda/tv
-        - name: tv2
-          nfs:
-            server: 10.0.50.1
-            path: /volume25/Neverland/tv
+            server: 10.0.50.3
+            path: /mnt/usr/tv
