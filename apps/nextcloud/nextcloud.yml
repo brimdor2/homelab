@@ -94,9 +94,9 @@ spec:
       volumes:
         - name: config
           nfs:
-            server: 10.0.50.1
-            path: /volume2/nextcloud_config
+            server: 10.0.50.3
+            path: /mnt/usr/nextcloud_config
         - name: data
           nfs:
             server: 10.0.50.1
-            path: /volume25/nextcloud_data
+            path: /mnt/usr/nextcloud_data
