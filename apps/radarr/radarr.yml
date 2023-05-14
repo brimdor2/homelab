@@ -123,12 +123,12 @@ spec:
         - name: config
           nfs:
             server: 10.0.50.3
-            path: /mnt/usr/radarr_config
+            path: /mnt/user/radarr_config
         - name: downloads
           nfs:
             server: 10.0.50.3
-            path: /mnt/usr/downloads
+            path: /mnt/user/downloads
         - name: movies
           nfs:
             server: 10.0.50.3
-            path: /mnt/usr/movies
+            path: /mnt/user/movies
