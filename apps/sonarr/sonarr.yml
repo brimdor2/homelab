@@ -122,12 +122,12 @@ spec:
         - name: config
           nfs:
             server: 10.0.50.3
-            path: /mnt/usr/sonarr_config
+            path: /mnt/user/sonarr_config
         - name: downloads
           nfs:
             server: 10.0.50.3
-            path: /mnt/usr/downloads
+            path: /mnt/user/downloads
         - name: tv
           nfs:
             server: 10.0.50.3
-            path: /mnt/usr/tv
+            path: /mnt/user/tv
