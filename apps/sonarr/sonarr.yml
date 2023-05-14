@@ -99,11 +99,11 @@ spec:
               mountPath: /tv
           env:
             - name: PUID
-              # value: "99"
-              value: "0"
+              value: "99"
+              # value: "0"
             - name: PGID
-              # value: "100"
-              value: "0"
+              value: "100"
+              # value: "0"
             - name: PATH
               value: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
             - name: HOME
