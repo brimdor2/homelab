@@ -76,7 +76,7 @@ metadata:
   labels:
     app: nzbget
 spec:
-  replicas: 0
+  replicas: 1
   strategy:
     type: Recreate
   selector:
@@ -115,20 +115,20 @@ spec:
         - name: config
           nfs:
             server: 10.0.50.3
-            path: /mnt/usr/nzbget_config
+            path: /mnt/user/nzbget_config
         - name: data
           nfs:
             server: 10.0.50.3
-            path: /mnt/usr/nzbget_data
+            path: /mnt/user/nzbget_data
         - name: intermediate
           nfs:
             server: 10.0.50.3
-            path: /mnt/usr/nzbget_intermediate
+            path: /mnt/user/nzbget_intermediate
         - name: downloads
           nfs:
             server: 10.0.50.3
-            path: /mnt/usr/downloads
+            path: /mnt/user/downloads
         - name: apps
           nfs:
             server: 10.0.50.3
-            path: /mnt/usr/apps
+            path: /mnt/user/apps
