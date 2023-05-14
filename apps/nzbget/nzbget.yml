@@ -93,12 +93,12 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
-            - name: data
-              mountPath: /data
+            # - name: data
+            #   mountPath: /data
             - name: downloads
               mountPath: /downloads
-            - name: intermediate
-              mountPath: /intermediate
+            # - name: intermediate
+            #   mountPath: /intermediate
             - name: apps
               mountPath: /apps
           env:
@@ -116,14 +116,14 @@ spec:
           nfs:
             server: 10.0.50.3
             path: /mnt/user/nzbget_config
-        - name: data
-          nfs:
-            server: 10.0.50.3
-            path: /mnt/user/nzbget_data
-        - name: intermediate
-          nfs:
-            server: 10.0.50.3
-            path: /mnt/user/nzbget_intermediate
+        # - name: data
+        #   nfs:
+        #     server: 10.0.50.3
+        #     path: /mnt/user/nzbget_data
+        # - name: intermediate
+        #   nfs:
+        #     server: 10.0.50.3
+        #     path: /mnt/user/nzbget_intermediate
         - name: downloads
           nfs:
             server: 10.0.50.3
