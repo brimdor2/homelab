@@ -77,7 +77,7 @@ metadata:
     app: requestrr
   namespace: requestrr
 spec:
-  replicas: 0
+  replicas: 1
   strategy:
     type: Recreate
   selector:
@@ -108,4 +108,4 @@ spec:
         - name: config
           nfs:
             server: 10.0.50.3
-            path: /mnt/usr/requestrr_config
+            path: /mnt/user/requestrr_config
