@@ -107,8 +107,8 @@ spec:
               value: "0"
             - name: PATH
               value: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-            - name: HOME
-              value: /root
+            # - name: HOME
+            #   value: /root
             - name: LANGUAGE
               value: en_US.UTF-8
             - name: TERM
