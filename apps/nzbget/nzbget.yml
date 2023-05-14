@@ -103,9 +103,11 @@ spec:
               mountPath: /apps
           env:
             - name: PUID
-              value: "99"
+              # value: "99"
+              value: "0"
             - name: PGID
-              value: "100"
+              value: "0"
+              # value: "100"
             - name: TZ
               value: America/Chicago
           ports:
