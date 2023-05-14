@@ -59,7 +59,7 @@ metadata:
     app: embystat
   namespace: embystat
 spec:
-  replicas: 0
+  replicas: 1
   strategy:
     type: Recreate
   selector:
@@ -90,4 +90,4 @@ spec:
         - name: config
           nfs:
             server: 10.0.50.3
-            path: /mnt/usr/embystat_config
+            path: /mnt/user/embystat_config
