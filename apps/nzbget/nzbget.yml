@@ -123,7 +123,7 @@ spec:
         - name: intermediate
           nfs:
             server: 10.0.50.3
-            path: /mnt/user/nzbget_intermediate
+            path: /mnt/user/nzbget_inter
         - name: downloads
           nfs:
             server: 10.0.50.3
