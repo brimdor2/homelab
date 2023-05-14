@@ -98,5 +98,5 @@ spec:
             path: /mnt/user/nextcloud_config
         - name: data
           nfs:
-            server: 10.0.50.1
+            server: 10.0.50.3
             path: /mnt/user/nextcloud_data
