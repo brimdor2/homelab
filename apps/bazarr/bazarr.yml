@@ -80,9 +80,9 @@ spec:
               mountPath: /movies
           env:
             - name: PUID
-              value: "0"
+              value: "99"
             - name: PGID
-              value: "0"
+              value: "100"
             - name: TZ
               value: America/Chicago
           ports:
