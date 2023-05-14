@@ -97,8 +97,8 @@ spec:
             #   mountPath: /data
             - name: downloads
               mountPath: /downloads
-            # - name: intermediate
-            #   mountPath: /intermediate
+            - name: intermediate
+              mountPath: /intermediate
             - name: apps
               mountPath: /apps
           env:
@@ -120,10 +120,10 @@ spec:
         #   nfs:
         #     server: 10.0.50.3
         #     path: /mnt/user/nzbget_data
-        # - name: intermediate
-        #   nfs:
-        #     server: 10.0.50.3
-        #     path: /mnt/user/nzbget_intermediate
+        - name: intermediate
+          nfs:
+            server: 10.0.50.3
+            path: /mnt/user/nzbget_intermediate
         - name: downloads
           nfs:
             server: 10.0.50.3
