@@ -87,6 +87,7 @@ spec:
       labels:
         app: sonarr
     spec:
+      nodeName: bulbasaur
       # affinity:
       #   nodeAffinity:
       #     requiredDuringSchedulingIgnoredDuringExecution:
