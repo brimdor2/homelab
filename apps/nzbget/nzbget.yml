@@ -89,7 +89,7 @@ spec:
     spec:
       containers:
         - name: nzbget
-          image: linuxserver/nzbget:latest
+          image: lscr.io/linuxserver/nzbget:latest
           volumeMounts:
             - name: config
               mountPath: /config
