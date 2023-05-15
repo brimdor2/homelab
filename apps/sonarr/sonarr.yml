@@ -92,7 +92,7 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-              - key: nodeName
+              - key: name
                 operator: In
                 values:
                 - bulbasaur
