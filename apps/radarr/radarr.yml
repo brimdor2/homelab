@@ -95,7 +95,7 @@ spec:
             - name: config
               mountPath: /config
             - name: backup-config
-              mountPath: /backup_config
+              mountPath: /config/Backups
             - name: downloads
               mountPath: /downloads
             - name: movies
@@ -127,7 +127,7 @@ spec:
         - name: backup-config
           nfs:
             server: 10.0.50.3
-            path: /mnt/user/radarr_config
+            path: /mnt/user/radarr_backups
         - name: config
           hostPath:
             path: /radarr/config
