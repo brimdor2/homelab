@@ -76,15 +76,6 @@ metadata:
     app: sonarr
   namespace: sonarr
 spec:
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: nodeName
-            operator: In
-            values:
-            - bulbasaur
   replicas: 1
   strategy:
     type: Recreate
@@ -96,6 +87,15 @@ spec:
       labels:
         app: sonarr
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: nodeName
+                operator: In
+                values:
+                - bulbasaur
       containers:
         - name: sonarr
           image: ghcr.io/linuxserver/sonarr:latest
