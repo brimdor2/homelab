@@ -94,7 +94,7 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
-            - name: backup_config
+            - name: backup-config
               mountPath: /backup_config
             - name: downloads
               mountPath: /downloads
@@ -128,7 +128,7 @@ spec:
           nfs:
             server: 10.0.50.3
             path: /mnt/user/radarr_config
-        - name: backup_config
+        - name: backup-config
           hostPath:
             path: /radarr/config
         - name: downloads
