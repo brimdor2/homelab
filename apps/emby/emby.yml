@@ -100,7 +100,7 @@ spec:
             - name: tv
               mountPath: /data/tv
             - name: backup
-              mountPath: /external_backup
+              mountPath: /backups
           env:
             - name: PUID
               value: "99"
