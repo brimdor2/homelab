@@ -93,6 +93,8 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
+            - name: backup-config
+              mountPath: /backup-config
             - name: downloads
               mountPath: /downloads
             - name: tv
@@ -125,6 +127,9 @@ spec:
           nfs:
             server: 10.0.50.3
             path: /mnt/user/sonarr_config
+        - name: config
+          hostPath:
+            path: /sonarr/config
         - name: downloads
           nfs:
             server: 10.0.50.3
