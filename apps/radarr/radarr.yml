@@ -124,11 +124,11 @@ spec:
               containerPort: 7878
 
       volumes:
-        - name: config
+        - name: backup-config
           nfs:
             server: 10.0.50.3
             path: /mnt/user/radarr_config
-        - name: backup-config
+        - name: config
           hostPath:
             path: /radarr/config
         - name: downloads
