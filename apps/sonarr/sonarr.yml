@@ -123,11 +123,11 @@ spec:
               containerPort: 8989
 
       volumes:
-        - name: config
+        - name: backup-config
           nfs:
             server: 10.0.50.3
             path: /mnt/user/sonarr_config
-        - name: backup-config
+        - name: config
           hostPath:
             path: /sonarr/config
         - name: downloads
