@@ -1,8 +1,8 @@
 import requests
 
 # Set your Cloudflare API key and zone ID
-API_KEY = ''
-ZONE_ID = ''
+API_KEY = 'Ua1MR25kyV98fB7ge0YlzXQmP-oLP3rTyfe2oQCt'
+ZONE_ID = '5e5a04c2e2975b78eb682d8d616eaa9f'
 
 # Specify the keywords to match in the content attribute
 KEYWORDS = ['heritage=external-dns','10.0.255.224', 'homelab-tunnel']

@@ -47,7 +47,7 @@ def delete_all_zerotier_networks(zerotier_token):
         print('Error message:', response.json())
 
 # Set your ZeroTier API token
-zerotier_token = ''
+zerotier_token = '4GmtUw3cIonf0CaESdByKqcTukgyRdHZ'
 
 # Call the function to delete all ZeroTier networks
 delete_all_zerotier_networks(zerotier_token)
