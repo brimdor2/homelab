@@ -1,6 +1,5 @@
 import requests
 
-
 # Set your Cloudflare API key and zone ID
 API_KEY = ''
 ZONE_ID = ''
