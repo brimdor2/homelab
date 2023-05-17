@@ -3,7 +3,6 @@
   roles:
     - k3s
     - automatic_upgrade
-    - nfs_utils
 
 - name: Create some basic config
   hosts: localhost
