@@ -3,7 +3,7 @@ import requests
 def delete_terraform_workspace(workspace_name):
     # Define your Terraform Cloud organization and API token
     organization = 'brimdor'
-    api_token = '0ssyzIOnbsX0Fw.atlasv1.XwlvYZ7jdSsDZ4YypLc4Vz4EGrS3aQPKktBWRps2bFDVyJl2SWOipEpI3tixFtovF1M'
+    api_token = 'VYQEyvUXyTh3EA.atlasv1.QxjE2WSjMIgfb5GNTD8ayz8RlQqsFPkyRXDFcepxWy4Fhpj24SOO4c4CDrLVIUW28W8'
 
     # Check if the workspace exists
     workspace_url = f'https://app.terraform.io/api/v2/organizations/{organization}/workspaces/{workspace_name}'

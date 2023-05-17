@@ -4,7 +4,6 @@ argo-cd:
       - --insecure
     config:
       statusbadge.enabled: 'true'
-      exec.enabled: 'true'
       resource.customizations.health.argoproj.io_Application: |
         hs = {}
         hs.status = "Progressing"
@@ -26,7 +25,7 @@ argo-cd:
         hajimari.io/appName: ArgoCD
         hajimari.io/icon: robot
       hosts:
-        - &host argocd.eaglepass.io
+        - &host argocd.khuedoan.com
       tls:
         - secretName: argocd-tls-certificate
           hosts:

@@ -1,4 +1,4 @@
-# Brimdor's Homelab
+# Khue's Homelab
 
 **[Features](#features) • [Get Started](#get-started) • [Documentation](https://homelab.khuedoan.com)**
 
@@ -49,7 +49,6 @@ More information can be found in [the roadmap](#roadmap) below.
 - [x] Automatically update DNS records for exposed services
 - [x] VPN without port forwarding
 - [x] Expose services to the internet securely with [Cloudflare Tunnel](https://www.cloudflare.com/products/tunnel/)
-- [x] Mass Removal of Cloudflare DNS using Postman (https://documenter.getpostman.com/view/7648432/SzfCUkk2?version=latest)
 - [x] CI/CD platform
 - [x] Private container registry
 - [x] Distributed storage

@@ -3,7 +3,7 @@ terraform {
 
   backend "remote" {
     hostname     = "app.terraform.io"
-    organization = "brimdor"
+    organization = "khuedoan"
 
     workspaces {
       name = "homelab-external"
@@ -23,7 +23,7 @@ terraform {
 
     http = {
       source  = "hashicorp/http"
-      version = "~> 2.1.0"
+      version = "~> 3.2.0"
     }
   }
 }
