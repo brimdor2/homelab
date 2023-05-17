@@ -85,6 +85,7 @@ spec:
       labels:
         app: emby
     spec:
+      nodeName: charmander
       containers:
         - name: emby
           image: lscr.io/linuxserver/emby
