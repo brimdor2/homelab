@@ -93,6 +93,10 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
+            - name: temp_config
+              mountPath: /temp_config
+            - name: backups
+              mountPath: /backups
             - name: downloads
               mountPath: /downloads
             - name: intermediate
@@ -102,9 +106,7 @@ spec:
           env:
             - name: PUID
               value: "99"
-              # value: "0"
             - name: PGID
-              # value: "0"
               value: "100"
             - name: TZ
               value: America/Chicago
@@ -116,10 +118,17 @@ spec:
           nfs:
             server: 10.0.50.3
             path: /mnt/user/sabnzbd_config
+        - name: temp_config
+          hostPath:
+            path: /sabnzbd/config
         - name: intermediate
           nfs:
             server: 10.0.50.3
             path: /mnt/user/sabnzbd_inter
+        - name: backups
+          nfs:
+            server: 10.0.50.3
+            path: /mnt/user/sabnzbd_backups
         - name: downloads
           nfs:
             server: 10.0.50.3
