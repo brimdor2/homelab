@@ -93,7 +93,7 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
-            - name: temp_config
+            - name: temp-config
               mountPath: /temp_config
             - name: backups
               mountPath: /backups
@@ -118,7 +118,7 @@ spec:
           nfs:
             server: 10.0.50.3
             path: /mnt/user/sabnzbd_config
-        - name: temp_config
+        - name: temp-config
           hostPath:
             path: /sabnzbd/config
         - name: intermediate
