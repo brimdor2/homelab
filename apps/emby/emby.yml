@@ -115,14 +115,16 @@ spec:
             - name: http2
               containerPort: 8920
       volumes:
+        - name: config
+          hostPath:
+            path: /emby/config
         - name: backup
           nfs:
             server: 10.0.50.3
-            path: /mnt/user/emby_backup
+            path: /mnt/user/emby_backups
         - name: transcode
-          nfs:
-            server: 10.0.50.3
-            path: /mnt/user/emby_transcode
+          hostPath:
+            path: /emby/transcode
         - name: dev-dri
           hostPath:
             path: /dev/dri
@@ -134,7 +136,3 @@ spec:
           nfs:
             server: 10.0.50.3
             path: /mnt/user/tv
-        - name: config
-          nfs:
-            server: 10.0.50.3
-            path: /mnt/user/emby_config
