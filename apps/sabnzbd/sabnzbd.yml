@@ -87,6 +87,7 @@ spec:
       labels:
         app: sabnzbd
     spec:
+      nodeName: pikachu
       containers:
         - name: sabnzbd
           image: linuxserver/sabnzbd:latest
