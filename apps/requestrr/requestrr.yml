@@ -97,9 +97,9 @@ spec:
               mountPath: /root/config
           env:
             - name: PUID
-              value: "99"
+              value: "0"
             - name: PGID
-              value: "100"
+              value: "0"
             - name: TZ
               value: America/Chicago
           ports:
