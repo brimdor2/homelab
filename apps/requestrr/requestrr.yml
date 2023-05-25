@@ -77,7 +77,7 @@ metadata:
     app: requestrr
   namespace: requestrr
 spec:
-  replicas: 0
+  replicas: 1
   strategy:
     type: Recreate
   selector:
@@ -88,7 +88,7 @@ spec:
       labels:
         app: requestrr
     spec:
-      nodeName: pikachu
+      # nodeName: pikachu
       containers:
         - name: requestrr
           image: darkalfx/requestrr:latest
