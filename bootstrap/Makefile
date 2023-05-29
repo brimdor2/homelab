@@ -5,6 +5,7 @@ default: namespace argocd root
 namespace:
 	kubectl create namespace argocd --dry-run=client --output=yaml \
 		| kubectl apply -f -
+	sleep 10
 
 .PHONY: argocd
 argocd:
