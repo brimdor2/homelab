@@ -123,10 +123,8 @@ spec:
             server: 10.0.50.3
             path: /mnt/user/emby_backups
         - name: transcode
-          type: HostPath
           hostPath:
             path: /emby/transcode
-            readOnly: false
         - name: dev-dri
           hostPath:
             path: /dev/dri
