@@ -8,6 +8,12 @@ if [ -z "$python_executable" ]; then
     exit 1
 fi
 
+# Function to run pip install command
+run_pip_install() {
+    echo "Running pip install..."
+    python -m pip install -r requirements.txt
+}
+
 # Function to run cloudflare_bulk_delete_dns.py
 run_cloudflare_bulk_delete_dns() {
     echo "Running Cloudflare Bulk DNS Cleanup..."
@@ -34,6 +40,7 @@ run_zerotier_delete_network() {
 
 # Function to run all scripts in the specified order
 run_all_scripts() {
+    run_pip_install
     run_cloudflare_bulk_delete_dns
     run_cloudflare_delete_tunnel
     run_terraform_workspace_delete_create
@@ -41,20 +48,28 @@ run_all_scripts() {
 }
 
 # Main menu
-echo "Select an option:"
-echo "1. Run Cloudflare Bulk Deletion"
-echo "2. Run Cloudflare Tunnel Deletion"
-echo "3. Run Terraform Workspace Deletion and Creation"
-echo "4. Run Zerotier Network Deletion"
-echo "5. Run all the things"
+while true; do
+    echo "Select an option:"
+    echo "1. Run Cloudflare Bulk Deletion"
+    echo "2. Run Cloudflare Tunnel Deletion"
+    echo "3. Run Terraform Workspace Deletion and Creation"
+    echo "4. Run Zerotier Network Deletion"
+    echo "5. Run all the things"
+    echo "6. Install Python dependencies"
+    echo "0. Exit"
 
-read -p "Enter your choice: " choice
+    read -p "Enter your choice: " choice
 
-case $choice in
-    1) run_cloudflare_bulk_delete_dns;;
-    2) run_cloudflare_delete_tunnel;;
-    3) run_terraform_workspace_delete_create;;
-    4) run_zerotier_delete_network;;
-    5) run_all_scripts;;
-    *) echo "Invalid choice";;
-esac
+    case $choice in
+        0) exit;;
+        1) run_cloudflare_bulk_delete_dns;;
+        2) run_cloudflare_delete_tunnel;;
+        3) run_terraform_workspace_delete_create;;
+        4) run_zerotier_delete_network;;
+        5) run_all_scripts;;
+        6) run_pip_install;;
+        *) echo "Invalid choice";;
+    esac
+
+    echo
+done
