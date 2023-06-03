@@ -11,7 +11,7 @@ fi
 # Function to run pip install command
 run_pip_install() {
     echo "Running pip install..."
-    python -m pip install -r requirements.txt
+    $python_executable -m pip install -r requirements.txt
 }
 
 # Function to run cloudflare_bulk_delete_dns.py
@@ -49,6 +49,8 @@ run_all_scripts() {
 
 # Main menu
 while true; do
+    echo " "
+    echo "<><><><><><><><><><><><><><><><><><><><><><><><>"
     echo "Select an option:"
     echo "1. Run Cloudflare Bulk Deletion"
     echo "2. Run Cloudflare Tunnel Deletion"
@@ -57,9 +59,10 @@ while true; do
     echo "5. Run all the things"
     echo "6. Install Python dependencies"
     echo "0. Exit"
-
+    echo "<><><><><><><><><><><><><><><><><><><><><><><><>"
+    echo " "
     read -p "Enter your choice: " choice
-
+    
     case $choice in
         0) exit;;
         1) run_cloudflare_bulk_delete_dns;;
