@@ -41,60 +41,62 @@ spec:
             pathType: Prefix
 
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
-  name: plex-service
+  name: plex-connect
   labels:
     app: plex
     app.kubernetes.io/name: plex
     app.kubernetes.io/instance: plex
 spec:
-  type: ClusterIP
-  externalTrafficPolicy:
+  clusterIP: 10.43.10.214
   ports:
     - name: http
       port: 32400
-      targetPort: http
+      targetPort: 32400
       protocol: TCP
     - name: http2
       port: 8324
-      targetPort: http
+      targetPort: 8324
       protocol: TCP
     - name: http3
       port: 3005
-      targetPort: http
+      targetPort: 3005
       protocol: TCP
     - name: http4
       port: 32469
-      targetPort: http
+      targetPort: 32469
       protocol: TCP
     - name: http5
       port: 1900
-      targetPort: http
+      targetPort: 1900
       protocol: UDP
     - name: http6
       port: 5353
-      targetPort: http
+      targetPort: 5353
       protocol: UDP
     - name: http7
       port: 32410
-      targetPort: http
+      targetPort: 32410
       protocol: UDP
     - name: http8
       port: 32412
-      targetPort: http
+      targetPort: 32412
       protocol: UDP
     - name: http9
       port: 32413
-      targetPort: http
+      targetPort: 32413
       protocol: UDP
     - name: http10
       port: 32414
-      targetPort: http
+      targetPort: 32414
       protocol: UDP
   selector:
     app: plex
+  type: ClusterIP
+
 
 ---
 apiVersion: apps/v1
