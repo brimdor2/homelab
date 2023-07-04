@@ -149,21 +149,21 @@ spec:
               containerPort: 32400
             - name: http2
               containerPort: 8324
-            - name: http
+            - name: http3
               containerPort: 3005
-            - name: http2
+            - name: http4
               containerPort: 32469
-            - name: http
+            - name: http5
               containerPort: 1900
-            - name: http2
+            - name: http6
               containerPort: 5353
-            - name: http
+            - name: http7
               containerPort: 32410
-            - name: http2
+            - name: http8
               containerPort: 32412
-            - name: http
+            - name: http9
               containerPort: 32413
-            - name: http2
+            - name: http10
               containerPort: 32414
       volumes:
         - name: config
