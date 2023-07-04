@@ -7,7 +7,6 @@ metadata:
     app.kubernetes.io/name: plex
     app.kubernetes.io/instance: plex
 spec:
-  clusterIP: None
   ports:
     - name: http
       port: 32400
@@ -51,7 +50,7 @@ spec:
       protocol: UDP
   selector:
     app: plex
-  type: Host
+  type: NodePort
 
 
 
