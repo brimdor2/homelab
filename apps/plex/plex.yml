@@ -139,7 +139,7 @@ spec:
             - name: PGID
               value: "100"
             - name: PLEX_CLAIM
-              value: "claim-VNWMLMm73N91vccS2Mse"
+              value: "claim-TheV8Jt5esSsxe3sEXx4"
             - name: VERSION
               value: docker
             - name: TZ
