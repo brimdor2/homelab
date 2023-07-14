@@ -1,3 +1,37 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: plex-ingress
+  labels:
+    app: plex
+    app.kubernetes.io/name: plex
+    app.kubernetes.io/instance: plex
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    external-dns.alpha.kubernetes.io/target: "homelab-tunnel.eaglepass.io"
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+    hajimari.io/appName: Plex
+    hajimari.io/icon: movie-roll
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - plex.eaglepass.io
+      secretName: plex-tls-certificate
+  rules:
+    - host: plex.eaglepass.io
+      http:
+        paths:
+          - path: /
+            backend:
+              service:
+                name: plex-service
+                port:
+                  name: http
+            pathType: Prefix
+
+---
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -7,10 +41,12 @@ metadata:
     app.kubernetes.io/name: plex
     app.kubernetes.io/instance: plex
 spec:
+  type: ClusterIP
+  externalTrafficPolicy:
   ports:
     - name: http
       port: 32400
-      targetPort: 32400
+      targetPort: http
       protocol: TCP
     # - name: http2
     #   port: 8324
@@ -22,11 +58,11 @@ spec:
     #   protocol: TCP
     - name: http4
       port: 32469
-      targetPort: 32469
+      targetPort: http
       protocol: TCP
     - name: http5
       port: 1900
-      targetPort: 1900
+      targetPort: http
       protocol: UDP
     # - name: http6
     #   port: 5353
@@ -50,7 +86,6 @@ spec:
     #   protocol: UDP
   selector:
     app: plex
-  type: NodePort
 
 
 
