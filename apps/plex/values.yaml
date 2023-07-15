@@ -17,14 +17,15 @@ plex:
           hosts:
             - *host
   image:
-    repository: ghcr.io/k8s-at-home/plex
-    tag:
+    repository: lscr.io/linuxserver/plex
+    tag: latest
     pullPolicy: IfNotPresent
   
   env:
     TZ: America/Chicago
     PGID: 100
     PUID: 99
+    VERSION: docker
   
   # podSecurityContext:
   #   runAsUser: 99
