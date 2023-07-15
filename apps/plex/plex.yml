@@ -17,6 +17,8 @@ spec:
   tls:
     - hosts:
         - plex.eaglepass.io
+        - plex-api.eaglepass.io
+        - plex-udp.eaglepass.io
       secretName: plex-tls-certificate
   rules:
     - host: plex.eaglepass.io
@@ -28,6 +30,26 @@ spec:
                 name: plex-service
                 port:
                   name: http
+            pathType: Prefix
+    - host: plex-api.eaglepass.io
+      http:
+        paths:
+          - path: /
+            backend:
+              service:
+                name: plex-service
+                port:
+                  name: http2
+            pathType: Prefix
+    - host: plex-udp.eaglepass.io
+      http:
+        paths:
+          - path: /
+            backend:
+              service:
+                name: plex-service
+                port:
+                  name: http3
             pathType: Prefix
 
 ---
@@ -48,13 +70,13 @@ spec:
       port: 32400
       targetPort: http
       protocol: TCP
-    - name: http4
+    - name: http2
       port: 32469
-      targetPort: http
+      targetPort: http2
       protocol: TCP
-    - name: http5
+    - name: http3
       port: 1900
-      targetPort: http
+      targetPort: http3
       protocol: UDP
   selector:
     app: plex
@@ -112,9 +134,9 @@ spec:
           ports:
             - name: http
               containerPort: 32400
-            - name: http4
+            - name: http2
               containerPort: 32469
-            - name: http5
+            - name: http3
               containerPort: 1900
       volumes:
         - name: config
