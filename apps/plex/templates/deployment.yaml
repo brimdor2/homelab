@@ -17,6 +17,20 @@ spec:
       labels:
         app: plex
     spec:
+      containers:
+      - env:
+        - name: PUID
+          value: {{ quote .Values.deployment.plex.env.puid }}
+        - name: PGID
+          value: {{ quote .Values.deployment.plex.env.pgid }}
+        - name: VERSION
+          value: {{ quote .Values.deployment.plex.env.version }}
+        - name: TZ
+          value: {{ quote .Values.deployment.plex.env.tz }}
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.deployment.plex.image.repository }}:{{ .Values.deployment.plex.image.tag }}
+        name: plex
       volumes:
         - name: config
           hostPath:
