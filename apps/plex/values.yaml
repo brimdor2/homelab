@@ -24,11 +24,15 @@ plex:
   env:
     TZ: America/Chicago
   
-  securityContext: {runAsUser: 100, runAsGroup: 99}
+  securityContext:
+    runAsUser: 100
+    runAsGroup: 99
+
   
-  nodeSelector: {nodeName: pikachu}
+  nodeSelector:
+    nodeName: pikachu
   
-  volumeMounts: [
+  volumeMounts:
     - name: config
       mountPath: /config
     - name: transcode
@@ -41,9 +45,8 @@ plex:
       mountPath: /tv
     - name: backup
       mountPath: /backups
-  ]
 
-  volumes: [
+  volumes:
     - name: config
       hostPath:
         path: /plex/config
@@ -65,4 +68,3 @@ plex:
       nfs:
         server: 10.0.50.3
         path: /mnt/user/tv
-  ]
