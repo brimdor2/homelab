@@ -1,0 +1,70 @@
+plex:
+  ingress:
+    main:
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        hajimari.io/appName: Plex
+        hajimari.io/icon: filmstrip
+      hosts:
+        - host: &host plex.eaglepass.io
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: plex-tls-certificate
+          hosts:
+            - *host
+  image:
+    repository: ghcr.io/k8s-at-home/plex
+    tag:
+    pullPolicy: IfNotPresent
+  
+  env:
+    TZ: America/Chicago
+  
+  securityContext: {}
+    runAsUser: 100
+    runAsGroup: 99
+  
+  nodeSelector: {}
+    nodeName: pikachu
+  
+  volumeMounts: []
+    - name: config
+      mountPath: /config
+    - name: transcode
+      mountPath: /transcode
+    - name: dev-dri
+      mountPath: /dev/dri
+    - name: movies
+      mountPath: /movies
+    - name: tv
+      mountPath: /tv
+    - name: backup
+      mountPath: /backups
+  
+  volumes: []
+    - name: config
+      hostPath:
+        path: /plex/config
+    - name: backup
+      nfs:
+        server: 10.0.50.3
+        path: /mnt/user/plex_backups
+    - name: transcode
+      hostPath:
+        path: /plex/transcode
+    - name: dev-dri
+      hostPath:
+        path: /dev/dri
+    - name: movies
+      nfs:
+        server: 10.0.50.3
+        path: /mnt/user/movies
+    - name: tv
+      nfs:
+        server: 10.0.50.3
+        path: /mnt/user/tv
+
