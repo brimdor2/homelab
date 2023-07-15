@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "plex.fullname" . }}-deployment
+  labels:
+    app: plex
+  {{- include "plex.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      app: plex
+    {{- include "plex.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: plex
+      {{- include "plex.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        - name: PUID
+          value: {{ quote .Values.deployment.plex.env.puid }}
+        - name: PGID
+          value: {{ quote .Values.deployment.plex.env.pgid }}
+        - name: VERSION
+          value: {{ quote .Values.deployment.plex.env.version }}
+        - name: TZ
+          value: {{ quote .Values.deployment.plex.env.tz }}
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.deployment.plex.image.repository }}:{{ .Values.deployment.plex.image.tag
+          | default .Chart.AppVersion }}
+        name: plex
+        ports:
+        - containerPort: 32400
+          name: http
+        - containerPort: 32469
+          name: http4
+        - containerPort: 1900
+          name: http5
+        resources: {}
+        volumeMounts:
+        - mountPath: /config
+          name: config
+        - mountPath: /transcode
+          name: transcode
+        - mountPath: /dev/dri
+          name: dev-dri
+        - mountPath: /movies
+          name: movies
+        - mountPath: /tv
+          name: tv
+        - mountPath: /backups
+          name: backup
+      nodeName: pikachu
+      volumes:
+      - hostPath:
+          path: /plex/config
+        name: config
+      - name: backup
+        nfs:
+          path: /mnt/user/plex_backups
+          server: 10.0.50.3
+      - hostPath:
+          path: /plex/transcode
+        name: transcode
+      - hostPath:
+          path: /dev/dri
+        name: dev-dri
+      - name: movies
+        nfs:
+          path: /mnt/user/movies
+          server: 10.0.50.3
+      - name: tv
+        nfs:
+          path: /mnt/user/tv
+          server: 10.0.50.3
