@@ -18,7 +18,6 @@ spec:
         app: plex
     spec:
       containers:
-        name: plex
       volumes:
         - name: config
           hostPath:
