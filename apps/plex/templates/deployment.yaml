@@ -19,6 +19,7 @@ spec:
     spec:
       containers:
       - name: plex
+        image: lscr.io/linuxserver/plex
         volumeMounts:
           - name: config
             mountPath: /config
