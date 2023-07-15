@@ -30,7 +30,7 @@ plex:
 
   
   nodeSelector:
-    nodeName: pikachu
+    node: pikachu
   
   volumeMounts:
     - name: config
