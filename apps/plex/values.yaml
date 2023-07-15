@@ -24,9 +24,7 @@ plex:
   env:
     TZ: America/Chicago
   
-  securityContext: {}
-    runAsUser: 100
-    runAsGroup: 99
+  securityContext: {runAsUser: 100, runAsGroup: 99}
   
   nodeSelector: {}
     nodeName: pikachu
