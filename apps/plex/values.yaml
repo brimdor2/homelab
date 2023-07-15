@@ -23,12 +23,12 @@ plex:
   
   env:
     TZ: America/Chicago
-    # PGID: 99
-    # PUID: 100
+    PGID: 100
+    PUID: 99
   
-  podSecurityContext:
-    runAsUser: 99
-    runAsGroup: 100
+  # podSecurityContext:
+  #   runAsUser: 99
+  #   runAsGroup: 100
 
   
   # nodeSelector:
