@@ -29,8 +29,8 @@ plex:
     runAsGroup: 99
 
   
-  nodeSelector:
-    node: pikachu
+  # nodeSelector:
+  nodeName: pikachu
   
   volumeMounts:
     - name: config
