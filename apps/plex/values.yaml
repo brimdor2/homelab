@@ -63,7 +63,7 @@ plex:
   # nodeSelector:
   nodeName: pikachu
   
-  volumeMounts:
+  volumeMounts: []
     - name: config
       mountPath: /config
     - name: transcode
@@ -77,7 +77,7 @@ plex:
     - name: backup
       mountPath: /backups
 
-  volumes:
+  volumes: []
     - name: config
       hostPath:
         path: /plex/config
