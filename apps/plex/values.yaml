@@ -40,7 +40,7 @@ plex:
         dnla-udp:
           enabled: true
           port: 1900
-          protocol: TCP
+          protocol: UDP
           targetPort: 1900
       externalTrafficPolicy: Local
 
@@ -48,16 +48,15 @@ plex:
     repository: lscr.io/linuxserver/plex
     tag: latest
     pullPolicy: IfNotPresent
-  
+
   env:
     TZ: America/Chicago
     PGID: 100
     PUID: 99
     VERSION: docker
-  
-  # nodeSelector:
+
   nodeName: pikachu
-  
+
   volumeMounts:
     - name: config
       mountPath: /config
@@ -73,24 +72,24 @@ plex:
       mountPath: /backups
 
   volumes:
-    config:
+    - name: config
       hostPath:
         path: /plex/config
-    backup:
+    - name: backup
       nfs:
         server: 10.0.50.3
         path: /mnt/user/plex_backups
-    transcode:
+    - name: transcode
       hostPath:
         path: /plex/transcode
-    dev-dri:
+    - name: dev-dri
       hostPath:
         path: /dev/dri
-    movies:
+    - name: movies
       nfs:
         server: 10.0.50.3
         path: /mnt/user/movies
-    tv:
+    - name: tv
       nfs:
         server: 10.0.50.3
         path: /mnt/user/tv
