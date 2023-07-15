@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: plex-deployment
+  name: plex
   labels:
     app: plex
   namespace: plex
@@ -33,6 +33,17 @@ spec:
             mountPath: /tv
           - name: backup
             mountPath: /backups
+        env:
+          - name: PUID
+            value: "99"
+          - name: PGID
+            value: "100"
+          - name: VERSION
+            value: docker
+          - name: TZ
+            value: "America/Chicago"
+          - name: PLEX_CLAIM
+            value: claim-E6FzBw4ynK9U65WrbYzF
       volumes:
         - name: config
           hostPath:
