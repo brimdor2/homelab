@@ -26,7 +26,7 @@ plex:
     # PGID: 99
     # PUID: 100
   
-  securityContext:
+  podSecurityContext:
     runAsUser: 99
     runAsGroup: 100
 
