@@ -58,41 +58,16 @@ plex:
     PUID: 99
     VERSION: docker
 
-
-      
-  volumes:
+  volumeMounts:
     - name: config
-      hostPath:
-        path: /plex/config
-    - name: backup
-      nfs:
-        server: 10.0.50.3
-        path: /mnt/user/plex_backups
+      mountPath: /config
     - name: transcode
-      hostPath:
-        path: /plex/transcode
+      mountPath: /transcode
     - name: dev-dri
-      hostPath:
-        path: /dev/dri
+      mountPath: /dev/dri
     - name: movies
-      nfs:
-        server: 10.0.50.3
-        path: /mnt/user/movies
+      mountPath: /movies
     - name: tv
-      nfs:
-        server: 10.0.50.3
-        path: /mnt/user/tv
-
-volumeMounts:
-  - name: config
-    mountPath: /config
-  - name: transcode
-    mountPath: /transcode
-  - name: dev-dri
-    mountPath: /dev/dri
-  - name: movies
-    mountPath: /movies
-  - name: tv
-    mountPath: /tv
-  - name: backup
-    mountPath: /backups
+      mountPath: /tv
+    - name: backup
+      mountPath: /backups
