@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: plex-service
+  labels:
+    app: plex
+    app.kubernetes.io/name: plex
+    app.kubernetes.io/instance: plex
+spec:
+  type: ClusterIP
+  externalTrafficPolicy:
+  ports:
+    - name: http
+      port: 32400
+      targetPort: http
+      protocol: TCP
+    - name: http4
+      port: 32469
+      targetPort: 32469
+      protocol: TCP
+    - name: http5
+      port: 1900
+      targetPort: 1900
+      protocol: UDP
+  selector:
+    app: plex

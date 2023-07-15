@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plex-deployment
+  labels:
+    app: plex
+  namespace: plex
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: plex
+  template:
+    metadata:
+      labels:
+        app: plex
+    spec:
+      nodeName: pikachu
+      containers:
+        - name: plex
+          image: lscr.io/linuxserver/plex:latest
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: transcode
+              mountPath: /transcode
+            - name: dev-dri
+              mountPath: /dev/dri
+            - name: movies
+              mountPath: /movies
+            - name: tv
+              mountPath: /tv
+            - name: backup
+              mountPath: /backups
+          env:
+            - name: PUID
+              value: "99"
+            - name: PGID
+              value: "100"
+            - name: VERSION
+              value: docker
+            - name: TZ
+              value: "America/Chicago"
+          ports:
+            - name: http
+              containerPort: 32400
+            - name: http4
+              containerPort: 32469
+            - name: http5
+              containerPort: 1900
+      volumes:
+        - name: config
+          hostPath:
+            path: /plex/config
+        - name: backup
+          nfs:
+            server: 10.0.50.3
+            path: /mnt/user/plex_backups
+        - name: transcode
+          hostPath:
+            path: /plex/transcode
+        - name: dev-dri
+          hostPath:
+            path: /dev/dri
+        - name: movies
+          nfs:
+            server: 10.0.50.3
+            path: /mnt/user/movies
+        - name: tv
+          nfs:
+            server: 10.0.50.3
+            path: /mnt/user/tv
