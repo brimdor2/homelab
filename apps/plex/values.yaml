@@ -7,11 +7,11 @@ connect:
   - name: http4
     port: 32469
     protocol: TCP
-    targetPort: http
+    targetPort: 32469
   - name: http5
     port: 1900
     protocol: UDP
-    targetPort: http
+    targetPort: 1900
   type: ClusterIP
 deployment:
   plex:
