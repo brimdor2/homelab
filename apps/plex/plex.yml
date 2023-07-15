@@ -50,11 +50,11 @@ spec:
       protocol: TCP
     - name: http4
       port: 32469
-      targetPort: 32469
+      targetPort: http
       protocol: TCP
     - name: http5
       port: 1900
-      targetPort: 1900
+      targetPort: http
       protocol: UDP
   selector:
     app: plex
