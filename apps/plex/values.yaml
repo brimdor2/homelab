@@ -1,0 +1,27 @@
+connect:
+  ports:
+  - name: http
+    port: 32400
+    protocol: TCP
+    targetPort: http
+  - name: http4
+    port: 32469
+    protocol: TCP
+    targetPort: http
+  - name: http5
+    port: 1900
+    protocol: UDP
+    targetPort: http
+  type: ClusterIP
+deployment:
+  plex:
+    env:
+      pgid: "100"
+      puid: "99"
+      tz: America/Chicago
+      version: docker
+    image:
+      repository: lscr.io/linuxserver/plex
+      tag: latest
+  replicas: 1
+kubernetesClusterDomain: cluster.local
