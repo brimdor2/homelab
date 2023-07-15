@@ -26,8 +26,7 @@ plex:
   
   securityContext: {runAsUser: 100, runAsGroup: 99}
   
-  nodeSelector: {}
-    nodeName: pikachu
+  nodeSelector: {nodeName: pikachu}
   
   volumeMounts: []
     - name: config
