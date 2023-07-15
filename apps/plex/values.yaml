@@ -71,25 +71,25 @@ plex:
     - name: backup
       mountPath: /backups
 
-  volumes:
-    - name: config
-      hostPath:
-        path: /plex/config
-    - name: backup
-      nfs:
-        server: 10.0.50.3
-        path: /mnt/user/plex_backups
-    - name: transcode
-      hostPath:
-        path: /plex/transcode
-    - name: dev-dri
-      hostPath:
-        path: /dev/dri
-    - name: movies
-      nfs:
-        server: 10.0.50.3
-        path: /mnt/user/movies
-    - name: tv
-      nfs:
-        server: 10.0.50.3
-        path: /mnt/user/tv
+volumes:
+  - name: config
+    hostPath:
+      path: /plex/config
+  - name: backup
+    nfs:
+      server: 10.0.50.3
+      path: /mnt/user/plex_backups
+  - name: transcode
+    hostPath:
+      path: /plex/transcode
+  - name: dev-dri
+    hostPath:
+      path: /dev/dri
+  - name: movies
+    nfs:
+      server: 10.0.50.3
+      path: /mnt/user/movies
+  - name: tv
+    nfs:
+      server: 10.0.50.3
+      path: /mnt/user/tv
