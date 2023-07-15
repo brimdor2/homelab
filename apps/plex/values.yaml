@@ -49,6 +49,9 @@ plex:
     tag: latest
     pullPolicy: IfNotPresent
 
+  nodeSelector:
+    kubernetes.io/hostname: pikachu
+
   env:
     TZ: America/Chicago
     PGID: 100
@@ -90,6 +93,4 @@ plex:
       nfs:
         server: 10.0.50.3
         path: /mnt/user/tv
-
-nodeName: pikachu
 
