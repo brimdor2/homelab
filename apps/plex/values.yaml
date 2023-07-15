@@ -52,12 +52,12 @@ plex:
   nodeSelector:
     kubernetes.io/hostname: pikachu
 
-  env:
-    TZ: America/Chicago
-    PGID: 100
-    PUID: 99
-    VERSION: docker
-    PLEX_CLAIM: claim-aXfNsinzX2CdrSnf99NF
+  # env:
+  #   TZ: America/Chicago
+  #   PGID: 100
+  #   PUID: 99
+  #   VERSION: docker
+  #   PLEX_CLAIM: claim-aXfNsinzX2CdrSnf99NF
 
 
   # volumeMounts:
