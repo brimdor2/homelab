@@ -16,19 +16,33 @@ plex:
         - secretName: plex-tls-certificate
           hosts:
             - *host
-  
-  service:
-    # -- Enable a service for the code-server add-on.
-    enabled: true
-    type: ClusterIP
-    # Specify the default port information
-    ports:
-      plex:
-        port: 32400
-        enabled: true
-        protocol: TCP
-        targetPort: http
 
+  service:
+    main:
+      primary: true
+      ports:
+        http:
+          port: 32400
+    dnla-tcp:
+      enabled: false
+      type: NodePort
+      ports:
+        dnla-tcp:
+          enabled: true
+          port: 32469
+          protocol: TCP
+          targetPort: 32469
+      externalTrafficPolicy: Local
+    dnla-udp:
+      enabled: false
+      type: NodePort
+      ports:
+        dnla-udp:
+          enabled: true
+          port: 1900
+          protocol: TCP
+          targetPort: 1900
+      externalTrafficPolicy: Local
 
   image:
     repository: lscr.io/linuxserver/plex
