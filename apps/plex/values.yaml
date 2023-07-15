@@ -55,15 +55,10 @@ plex:
     PUID: 99
     VERSION: docker
   
-  # podSecurityContext:
-  #   runAsUser: 99
-  #   runAsGroup: 100
-
-  
   # nodeSelector:
   nodeName: pikachu
   
-  volumeMounts: []
+  volumeMounts:
     - name: config
       mountPath: /config
     - name: transcode
@@ -77,25 +72,25 @@ plex:
     - name: backup
       mountPath: /backups
 
-  volumes: []
-    - name: config
+  volumes:
+    config:
       hostPath:
         path: /plex/config
-    - name: backup
+    backup:
       nfs:
         server: 10.0.50.3
         path: /mnt/user/plex_backups
-    - name: transcode
+    transcode:
       hostPath:
         path: /plex/transcode
-    - name: dev-dri
+    dev-dri:
       hostPath:
         path: /dev/dri
-    - name: movies
+    movies:
       nfs:
         server: 10.0.50.3
         path: /mnt/user/movies
-    - name: tv
+    tv:
       nfs:
         server: 10.0.50.3
         path: /mnt/user/tv
