@@ -10,7 +10,7 @@
     minute: 0
     hour: 2
     weekday: 1
-    job: "shutdown -r now"
+    job: "/sbin/reboot"
     state: present
 
 - name: Set up SECOND WEEKLY reboot
@@ -19,7 +19,7 @@
     minute: 0
     hour: 2
     weekday: 5
-    job: "shutdown -r now"
+    job: "/sbin/reboot"
     state: present
 
 - name: Restart Cronie Service
