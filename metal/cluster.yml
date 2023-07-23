@@ -3,6 +3,7 @@
   roles:
     - k3s
     - automatic_upgrade
+    - cronjobs
 
 - name: Create some basic config
   hosts: localhost
