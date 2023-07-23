@@ -4,12 +4,12 @@ metadata:
   name: blog
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    external-dns.alpha.kubernetes.io/target: homelab-tunnel.eaglepass.io
+    external-dns.alpha.kubernetes.io/target: homelab-tunnel.falconpunch.org
     external-dns.alpha.kubernetes.io/cloudflare-proxied: 'true'
 spec:
   ingressClassName: nginx
   rules:
-    - host: &host www.eaglepass.io
+    - host: &host www.falconpunch.org
       http:
         paths:
           - pathType: ImplementationSpecific

@@ -14,10 +14,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - radarr.eaglepass.io
+        - radarr.falconpunch.org
       secretName: radarr-tls-certificate
   rules:
-    - host: radarr.eaglepass.io
+    - host: radarr.falconpunch.org
       http:
         paths:
           - path: /

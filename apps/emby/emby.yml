@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/instance: emby
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    external-dns.alpha.kubernetes.io/target: "homelab-tunnel.eaglepass.io"
+    external-dns.alpha.kubernetes.io/target: "homelab-tunnel.falconpunch.org"
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
     hajimari.io/appName: Emby
     hajimari.io/icon: movie-roll
@@ -16,11 +16,11 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - emby.eaglepass.io
-        - emby-health.eaglepass.io
+        - emby.falconpunch.org
+        - emby-health.falconpunch.org
       secretName: emby-tls-certificate
   rules:
-    - host: emby.eaglepass.io
+    - host: emby.falconpunch.org
       http:
         paths:
           - path: /
@@ -30,7 +30,7 @@ spec:
                 port:
                   name: http
             pathType: Prefix
-    - host: emby-health.eaglepass.io
+    - host: emby-health.falconpunch.org
       http:
         paths:
           - path: /

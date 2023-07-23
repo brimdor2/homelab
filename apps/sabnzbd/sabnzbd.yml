@@ -14,10 +14,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - sabnzbd.eaglepass.io
+        - sabnzbd.falconpunch.org
       secretName: sabnzbd-tls-certificate
   rules:
-    - host: sabnzbd.eaglepass.io
+    - host: sabnzbd.falconpunch.org
       http:
         paths:
           - path: /

@@ -17,5 +17,5 @@ spec:
     spec:
       containers:
         - name: blog
-          image: registry.eaglepass.io/blog:latest
+          image: registry.falconpunch.org/blog:latest
           imagePullPolicy: Always

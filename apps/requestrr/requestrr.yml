@@ -14,10 +14,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - requestrr.eaglepass.io
+        - requestrr.falconpunch.org
       secretName: requestrr-tls-certificate
   rules:
-    - host: requestrr.eaglepass.io
+    - host: requestrr.falconpunch.org
       http:
         paths:
           - path: /

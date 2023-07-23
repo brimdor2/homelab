@@ -8,6 +8,7 @@ KUBE_CONFIG_PATH = $(KUBECONFIG)
 default: metal bootstrap external smoke-test post-install clean
 
 configure:
+	bash scripts/git_setup.sh
 	./scripts/configure
 	git status
 

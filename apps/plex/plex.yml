@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/instance: plex
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    external-dns.alpha.kubernetes.io/target: "homelab-tunnel.eaglepass.io"
+    external-dns.alpha.kubernetes.io/target: "homelab-tunnel.falconpunch.org"
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
     hajimari.io/appName: Plex
     hajimari.io/icon: movie-roll
@@ -16,10 +16,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - plex.eaglepass.io
+        - plex.falconpunch.org
       secretName: plex-tls-certificate
   rules:
-    - host: plex.eaglepass.io
+    - host: plex.falconpunch.org
       http:
         paths:
           - path: /
@@ -29,7 +29,7 @@ spec:
                 port:
                   name: http
             pathType: Prefix
-    # - host: plex-api.eaglepass.io
+    # - host: plex-api.falconpunch.org
     #   http:
     #     paths:
     #       - path: /
@@ -39,7 +39,7 @@ spec:
     #             port:
     #               name: http2
     #         pathType: Prefix
-    # - host: plex-udp.eaglepass.io
+    # - host: plex-udp.falconpunch.org
     #   http:
     #     paths:
     #       - path: /

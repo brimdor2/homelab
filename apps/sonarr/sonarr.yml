@@ -14,10 +14,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - sonarr.eaglepass.io
+        - sonarr.falconpunch.org
       secretName: sonarr-tls-certificate
   rules:
-    - host: sonarr.eaglepass.io
+    - host: sonarr.falconpunch.org
       http:
         paths:
           - path: /
